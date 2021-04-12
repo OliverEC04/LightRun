@@ -15,10 +15,11 @@ tick = 0
 hitTick = 0
 track = []
 
-print("hej")
 
 for i in range(5):
+    track.append([0])
+
     for j in range(STRIPCOUNT):
-        track[i][j] = 0
+        track[i].append([0])
 
 print(track)
