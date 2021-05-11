@@ -1,2 +1,2 @@
 # LightRun
-kør programmet med: sudo python3 ledTest.py
+kør programmet med: sudo python3 led/ledTest.py
