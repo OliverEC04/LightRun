@@ -1,8 +1,9 @@
-from hx711 import HX711
+import time
 from rpi_ws281x import *
+import argparse
 
 # Constants
-STRIPCOUNT = 30
+LEDSIZE = {"x": 5, "y": 60}
 MOVESPEED = 5
 
 # Pins
