@@ -4,15 +4,16 @@ import argparse
 
 # Constants
 LEDSIZE = {"x": 5, "y": 60}
+BRIGHTNESS = 255 # 0 - 255
 MOVESPEED = 5
 
-# Pins
-STRIPPINS = [7, 8, 2, 3, 4]
+#   Pins
+LEDPIN = 18
 BTNPIN = 6
-LEDPIN = 5
+BTNLEDPIN = 5
 BUZZPIN = 16
-PRESS1PIN = 0
-PRESS2PIN = 1
+PRESSRIGHTPIN = 0
+PRESSLEFTPIN = 1
 
 # Variables
 tick = 0
