@@ -48,6 +48,7 @@ class Strip:
     def draw(self):
         for i in range(self.count):
             position = self.indexToPos(i)
+            print(self.track[position.x][position.y].type)
             self.led.setPixelColor(i, self.track[position.x][position.y].type)
 
     def posToIndex(self, position):
