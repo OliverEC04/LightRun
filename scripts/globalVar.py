@@ -1,4 +1,3 @@
-from globalVar import *
 from main import *
 from strip import *
 from segment import *
