@@ -15,7 +15,7 @@ class Strip:
             self.track.append([])
 
             for y in range(self.size.y):
-                self.track[x][y] = Tile(TileType.Empty)
+                self.track[x].append(Tile(TileType.Empty))
 
         self.track[math.floor(self.size.x / 2)][1] = TileType.Player
 
