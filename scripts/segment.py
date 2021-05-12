@@ -1,8 +1,6 @@
 from rpi_ws281x import *
 from enum import Enum
 from globalVar import *
-from strip import *
-from database import *
 
 class TileType(Enum):
     Empty = Color(0, 0, 0)
