@@ -51,7 +51,6 @@ class Strip:
         for i in range(self.count):
             position = self.indexToPos(i)
             print(i, position.x, position.y)
-            print(self.track[position.x][position.y].type.value)
             self.led.setPixelColor(i, self.track[position.x][position.y].type.value)
             # self.led.setPixelColor(i, Color(255, 255, 255))
             self.led.show()
