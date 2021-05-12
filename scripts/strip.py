@@ -1,7 +1,6 @@
 import math
 from rpi_ws281x import *
 from globalVar import *
-from main import *
 from segment import *
 from database import *
 
