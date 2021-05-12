@@ -6,9 +6,9 @@ from enum import Enum
 from rpi_ws281x import *
 
 # Enums
-class TileType(Enum):
-    Empty = Color(0, 0, 0)
-    Player = Color(0, 255, 0)
+class Tile(Enum):
+    Empt = Color(1, 1, 1)
+    User = Color(0, 255, 0)
     Wall = Color(255, 0, 0)
     Hole = Color(0, 0, 255)
 
@@ -19,20 +19,14 @@ class Vector2:
         self.y = y
 
 class Segment:
-    def __init__(self):
-        pass
-
-    def queue(self):
-        pass
-
-class Tile:
-    def __init__(self, type):
-        self.type = type
+    def __init__(self, segmentArray):
+        self.arr = segmentArray
 
 class Strip:
-    def __init__(self, size, pin, brightness, moveSpeed):
+    def __init__(self, size, pin, brightness, moveSpeed, tileHeight):
         self.size = size
         self.moveSpeed = moveSpeed
+        self.tileHeight = tileHeight
         self.count = size.x * size.y
         self.track = []
         self.led = Adafruit_NeoPixel(self.count, pin, 800000, 10, False, brightness, 0)
@@ -40,18 +34,26 @@ class Strip:
         for x in range(self.size.x):
             self.track.append([])
 
-            for y in range(self.size.y):
-                self.track[x].append(Tile(TileType.Empty))
+            for y in range(self.size.y / self.tileHeight):
+                self.track[x].append(Tile.Empt)
 
-        self.track[math.floor(self.size.x / 2)][1] = Tile(TileType.Player)
+        self.track[math.floor(self.size.x / 2)][1] = Tile.User
 
         self.led.begin()
 
     def draw(self):
+        for x in range(self.size.x):
+            for y in range(self.size.y):
+                self.track[x][y] = self.track[x][y + 1]
+
         for i in range(self.count):
             position = self.indexToPos(i)
-            self.led.setPixelColor(i, self.track[position.x][position.y].type.value)
+            self.led.setPixelColor(i, self.track[position.x][position.y].value)
             self.led.show()
+
+    def queueSegment(self, segment):
+        for i in range(self.size.x):
+            self.track[i].extend(segment.arr[i])
 
     def posToIndex(self, position):
         return position.x * self.size.y + position.y % self.size.y
@@ -95,17 +97,32 @@ BTNLEDPIN = 5
 BUZZPIN = 16
 PRESSRIGHTPIN = 0
 PRESSLEFTPIN = 1
-STRIP = Strip(Vector2(5, 60), 18, 50, 5)
+STRIP = Strip(Vector2(5, 60), 18, 50, 5, 5)
 DATABASE = Database("../assets/database.db")
+SEGMENT1 = Segment([
+    [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
+    [Tile.Empt, Tile.Empt, Tile.Empt, Tile.Hole],
+    [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Empt],
+    [Tile.Empt, Tile.Hole, Tile.Empt, Tile.Wall],
+    [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
+])
 
 # Variables
 tick = 0
 hitTick = 0
+runLoop = True
 
 # Intialize
-STRIP.draw()
+STRIP.queueSegment(SEGMENT1)
 
+# Loop
+while runLoop:
+    startTime = time.time()
 
+    STRIP.draw()
+
+    tick += 1
+    time.sleep(1 - (time.time() - startTime))
 
 
 
