@@ -2,7 +2,10 @@ import time
 from rpi_ws281x import *
 import argparse
 from globalVar import *
+from main import *
+from strip import *
 from segment import *
+from database import *
 
 # Intialize
 STRIP.draw()

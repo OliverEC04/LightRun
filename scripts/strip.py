@@ -1,7 +1,10 @@
 import math
 from rpi_ws281x import *
 from globalVar import *
+from main import *
+from strip import *
 from segment import *
+from database import *
 
 class Strip:
     def __init__(self, size, pin, brightness, moveSpeed):
