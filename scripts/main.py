@@ -97,7 +97,7 @@ BTNLEDPIN = 5
 BUZZPIN = 16
 PRESSRIGHTPIN = 0
 PRESSLEFTPIN = 1
-STRIP = Strip(Vector2(5, 60), 18, 20, 5)
+STRIP = Strip(Vector2(5, 60), 18, 50, 5)
 DATABASE = Database("../assets/database.db")
 
 # Variables
