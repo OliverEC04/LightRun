@@ -45,12 +45,15 @@ class Strip:
 
         self.track[math.floor(self.size.x / 2)][1] = TileType.Player
 
+        self.led.begin()
+
     def draw(self):
         for i in range(self.count):
             position = self.indexToPos(i)
             print(self.track[position.x][position.y].type.value)
             # self.led.setPixelColor(i, self.track[position.x][position.y].type.value)
             self.led.setPixelColor(i, Color(255, 255, 255))
+            self.led.show()
 
     def posToIndex(self, position):
         return position.x * self.size.y + position.y % self.size.y
