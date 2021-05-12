@@ -29,6 +29,3 @@ class Database:
             if sqliteConnection:
                 sqliteConnection.close()
                 print("The SQLite connection is closed")
-
-database = Database("database.db")
-database.insertScore("Neger", 10)
