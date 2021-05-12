@@ -1,2 +1,3 @@
 # LightRun
-kør programmet med: sudo python3 miscShit/ledTest.py -c
+main: sudo python3 scripts/main.py
+test: sudo python3 scripts/miscShit/ledTest.py -c
