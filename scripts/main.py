@@ -43,7 +43,7 @@ class Strip:
             for y in range(self.size.y):
                 self.track[x].append(Tile(TileType.Empty))
 
-        self.track[math.floor(self.size.x / 2)][1] = TileType.Player
+        self.track[math.floor(self.size.x / 2)][1] = Tile(TileType.Player)
 
         self.led.begin()
 
