@@ -62,7 +62,8 @@ class Strip:
 
         for i in range(self.count):
             self.led.setPixelColor(i, Color(40, 100, 240))
-            self.led.show()
+        
+        self.led.show()
 
         # trackIndex = 0
         # for i in range(self.count - 1):
