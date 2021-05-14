@@ -52,7 +52,7 @@ class Strip:
         # Draw to strips
         for x in range(len(self.track)):
             for y in range(len(self.track[x])):
-                if self.tick % self.tileHeight == 0 and y < len(self.track[x]):
+                if self.tick % self.tileHeight == 0 and y < len(self.track[x]) - 1:
                     self.track[x][y] = self.track[x][y + 1]
 
                 for i in range(self.tileHeight):
