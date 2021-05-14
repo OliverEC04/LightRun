@@ -35,7 +35,7 @@ class Strip:
         for x in range(self.size.x):
             self.track.append([])
 
-            for y in range(math(self.size.y / self.tileHeight)):
+            for y in range(math.ceil(self.size.y / self.tileHeight)):
                 self.track[x].append(Tile.Empt)
 
         self.track[math.floor(self.size.x / 2)][1] = Tile.User
