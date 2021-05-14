@@ -27,8 +27,9 @@ class Strip:
         self.size = size
         self.moveSpeed = moveSpeed
         self.tileHeight = tileHeight
-        self.count = size.x * size.y
+        self.tick = 0
         self.track = []
+        self.count = size.x * size.y
         self.led = Adafruit_NeoPixel(self.count, pin, 800000, 10, False, brightness, 0)
 
         for x in range(self.size.x):
@@ -42,14 +43,23 @@ class Strip:
         self.led.begin()
 
     def draw(self):
-        for x in range(self.size.x):
-            for y in range(self.size.y):
-                self.track[x][y] = self.track[x][y + 1]
+        if (tick % self.tileHeight == 0):
+            for x in range(self.size.x):
+                for y in range(self.size.y):
+                    self.track[x][y] = self.track[x][y + 1]
 
+        trackIndex = 0
         for i in range(self.count):
             position = self.indexToPos(i)
-            self.led.setPixelColor(i, self.track[position.x][position.y].value)
+            trackOffset = tick % self.tileHeight
+
+            self.led.setPixelColor(i, self.track[position.x][trackIndex + trackOffset].value)
             self.led.show()
+
+            if i % self.tileHeight == 0:
+                trackIndex += 1
+
+        tick += 1
 
     def queueSegment(self, segment):
         for i in range(self.size.x):
