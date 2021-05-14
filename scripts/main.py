@@ -50,9 +50,9 @@ class Strip:
                     self.track[x][y] = self.track[x][y + 1]
 
         # Draw to strips
-        for x in range(self.track):
-            for y in range(self.track[x]):
-                for i in range(self.tileHeight):
+        for x in range(len(self.track)):
+            for y in range(len(self.track[x])):
+                for i in range(len(self.tileHeight)):
                     stripIndex = self.posToIndex(Vector2(x, y)) + i
                     self.led.setPixelColor(stripIndex, self.track[x][y].value)
                     self.led.show()
