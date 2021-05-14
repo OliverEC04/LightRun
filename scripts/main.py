@@ -147,7 +147,7 @@ while runLoop:
 
     tick += 1
     print(time.time() - startTime)
-    #time.sleep(max(1 - (time.time() - startTime), 0))
+    time.sleep(max(1 - (time.time() - startTime), 0))
 
 
 
