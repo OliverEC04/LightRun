@@ -144,7 +144,7 @@ while runLoop:
     STRIP.draw()
 
     tick += 1
-    time.sleep(1 - (time.time() - startTime))
+    time.sleep(max(1 - (time.time() - startTime), 0))
 
 
 
