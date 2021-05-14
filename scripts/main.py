@@ -55,6 +55,7 @@ class Strip:
             position = self.indexToPos(i)
             trackOffset = self.tick % self.tileHeight
 
+            print(position.x, trackIndex + trackOffset)
             self.led.setPixelColor(i, self.track[position.x][trackIndex + trackOffset].value)
             self.led.show()
 
