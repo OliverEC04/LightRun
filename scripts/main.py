@@ -46,6 +46,7 @@ class Strip:
         if (self.tick % self.tileHeight == 0):
             for x in range(self.size.x):
                 for y in range(self.size.y):
+                    print(self.track[x][y + 1])
                     self.track[x][y] = self.track[x][y + 1]
 
         trackIndex = 0
