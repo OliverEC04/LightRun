@@ -58,8 +58,8 @@ class Strip:
                 if self.tick % self.tileHeight == 0 and y < len(self.track[x]) - 1:
                     self.track[x][y] = self.track[x][y + 1]
                 
-                index = self.posToIndex(Vector2(x, y))
-                # index = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y)) * 5))
+                # index = self.posToIndex(Vector2(x, y))
+                index = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y))))
                 print(index)
                 self.led.setPixelColor(index, self.track[x][y].value)
 
