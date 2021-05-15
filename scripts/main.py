@@ -81,9 +81,9 @@ class Strip:
 
     def queueSegment(self, segment):
         for i in range(self.size.x):
-            self.track[i].extend(Tile.Empt)
+            self.track[i].append(Tile.Empt)
             self.track[i].extend(segment.arr[i])
-            self.track[i].extend(Tile.Empt)
+            self.track[i].append(Tile.Empt)
 
     def posToIndex(self, position):
         return position.x * self.size.y + position.y % self.size.y
