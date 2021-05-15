@@ -47,16 +47,14 @@ class Strip:
 
     def draw(self):
         # Move track down
-        # if (self.tick % self.tileHeight == 0):
-        #     for x in range(len(self.track) - 1):
-        #         for y in range(len(self.track[x]) - 1):
-        #             self.track[x][y] = self.track[x][y + 1]
+        if (self.tick % self.tileHeight == 0):
+            for x in range(len(self.track) - 1):
+                for y in range(len(self.track[x]) - 1):
+                    self.track[x][y] = self.track[x][y + 1]
 
         # Draw to strips
-        for x in range(len(self.track)):
-            for y in range(len(self.track[x])):
-                if self.tick % self.tileHeight == 0 and y < len(self.track[x]) - 1:
-                    self.track[x][y] = self.track[x][y + 1]
+        # for x in range(len(self.track)):
+        #     for y in range(len(self.track[x])):
                 
                 # index = self.posToIndex(Vector2(x, y))
 
@@ -64,18 +62,29 @@ class Strip:
                 # print(index)
                 # self.led.setPixelColor(index, self.track[x][y].value)
                     
-                for i in range(self.tileHeight):
-                    trackOffset = self.tick % self.tileHeight
-                    # * self.tileHeight + i
+                # for i in range(self.tileHeight):
+                #     trackOffset = self.tick % self.tileHeight
+                #     # * self.tileHeight + i
 
-                    if self.seriesConnection:
-                        stripIndex = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y)) * self.tileHeight + i))
-                        print("x", x, "y", y, "i", i, "PtI", self.posToIndex(Vector2(x, y)), "SI", stripIndex)
+                #     if self.seriesConnection:
+                #         stripIndex = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y)) * self.tileHeight + i))
+                #         print("x", x, "y", y, "i", i, "PtI", self.posToIndex(Vector2(x, y)), "SI", stripIndex)
 
-                    else:
-                        stripIndex = math.floor(self.posToIndex(Vector2(x, y)) * self.tileHeight + i)
+                #     else:
+                #         stripIndex = math.floor(self.posToIndex(Vector2(x, y)) * self.tileHeight + i)
 
-                    self.led.setPixelColor(stripIndex, self.track[x][y].value)
+                #     self.led.setPixelColor(stripIndex, self.track[x][y].value)
+
+        for x in range(self.size.x):
+            for y in range(self.size.y):
+
+                position = Vector2(x, y)
+                if self.seriesConnection:
+                    stripIndex = math.floor(self.indexToSeries(self.posToIndex(position)))
+                else:
+                    stripIndex = math.floor(self.posToIndex(position))
+
+                self.led.setPixelColor(stripIndex, self.track[x][y].value)
 
         # trackIndex = 0
         # for i in range(self.count - 1):
