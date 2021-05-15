@@ -49,7 +49,7 @@ class Strip:
         # Move track down
         if (self.tick % self.tileHeight == 0):
             for x in range(len(self.track)):
-                for y in range(len(self.track[x])):
+                for y in range(len(self.track[x]) - 1):
                     self.track[x][y] = self.track[x][y + 1]
 
         # Draw to strips
