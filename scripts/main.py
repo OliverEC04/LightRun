@@ -80,11 +80,11 @@ class Strip:
 
                 position = Vector2(x, y)
                 if self.seriesConnection:
-                    stripIndex = math.floor(self.indexToSeries(self.posToIndex(position)))
+                    stripIndex = math.floor(self.indexToSeries(self.posToIndex(position) - self.tick % self.tileHeight))
                 else:
-                    stripIndex = math.floor(self.posToIndex(position))
+                    stripIndex = math.floor(self.posToIndex(position) - self.tick % self.tileHeight)
 
-                self.led.setPixelColor(stripIndex - self.tick % self.tileHeight, self.track[x][math.floor(y / self.tileHeight)].value)
+                self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
 
         # trackIndex = 0
         # for i in range(self.count - 1):
