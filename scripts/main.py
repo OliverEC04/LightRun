@@ -174,8 +174,8 @@ runLoop = True
 
 # Intialize
 STRIP.queueSegment(SEGMENT1)
-STRIP.queueSegment(SEGMENT1)
-STRIP.queueSegment(SEGMENT1)
+# STRIP.queueSegment(SEGMENT1)
+# STRIP.queueSegment(SEGMENT1)
 
 # Loop
 while runLoop:
