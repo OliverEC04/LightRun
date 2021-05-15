@@ -103,7 +103,7 @@ class Strip:
     def indexToSeries(self, index):
         if index % (self.size.y * 2) > self.size.y:
             midIndex = self.size.y * (self.indexToPos(index).x + 1) - self.size.y / 2
-            return (midIndex - index) * 2 + index - 1
+            return (midIndex - index) * 2 + index - 0
         else:
             return index
 
