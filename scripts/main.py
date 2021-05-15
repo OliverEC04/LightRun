@@ -72,7 +72,7 @@ class Strip:
                     else:
                         stripIndex = math.floor(self.posToIndex(Vector2(x, y)))
 
-                    self.led.setPixelColor(stripIndex, self.track[x][y].value)
+                    self.led.setPixelColor(stripIndex + i, self.track[x][y].value)
 
         # trackIndex = 0
         # for i in range(self.count - 1):
