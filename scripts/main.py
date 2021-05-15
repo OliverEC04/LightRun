@@ -168,7 +168,7 @@ while runLoop:
     STRIP.draw()
 
     tick += 1
-    print(time.time() - startTime)
+    print("frame tid: ", time.time() - startTime)
     time.sleep(max(1 - (time.time() - startTime), 0))
 
 
