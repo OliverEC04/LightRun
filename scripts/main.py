@@ -7,6 +7,13 @@ from rpi_ws281x import *
 
 """
 TODO:
+ * Movement
+   * Fodplader
+   * Knapper
+ * Pointgivning og scoreboard
+   * Optæl point når man spiller
+   * Skriv pointene til database
+   * Vis scoreboard på LCD
  * Transition på LEDer måske
 """
 
