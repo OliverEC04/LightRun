@@ -60,17 +60,19 @@ class Strip:
                 
                 # index = self.posToIndex(Vector2(x, y))
 
-                index = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y))))
-                print(index)
-                self.led.setPixelColor(index, self.track[x][y].value)
-
-                # if self.seriesConnection:
-                #     stripIndex = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y)))) + self.tick % self.tileHeight
-                # else:
-                #     stripIndex = math.floor(self.posToIndex(Vector2(x, y))) + self.tick % self.tileHeight
+                # index = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y))))
+                # print(index)
+                # self.led.setPixelColor(index, self.track[x][y].value)
                     
-                # for i in range(self.tileHeight):
-                #     self.led.setPixelColor(stripIndex, self.track[x][y].value)
+                for i in range(self.tileHeight):
+                    trackOffset = self.tick % self.tileHeight
+
+                    if self.seriesConnection:
+                        stripIndex = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y))))
+                    else:
+                        stripIndex = math.floor(self.posToIndex(Vector2(x, y)))
+
+                    self.led.setPixelColor(stripIndex + y * self.tileHeight, self.track[x][y].value)
 
         # trackIndex = 0
         # for i in range(self.count - 1):
@@ -103,7 +105,7 @@ class Strip:
     def indexToSeries(self, index):
         if index % (self.size.y * 2) > self.size.y:
             midIndex = self.size.y * (self.indexToPos(index).x + 1) - self.size.y / 2
-            return (midIndex - index) * 2 + index - 0
+            return (midIndex - index) * 2 + index - 1
         else:
             return index
 
