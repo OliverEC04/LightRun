@@ -112,10 +112,10 @@ class Strip:
         return position.x * self.size.y + position.y % self.size.y
 
     def indexToPos(self, index):
-        return Vector2(math.ceil(index / self.size.y), index % self.size.y)
+        return Vector2(math.floor(index / self.size.y), index % self.size.y)
 
     def indexToSeries(self, index):
-        if index % (self.size.y * 2) > self.size.y:
+        if index % (self.size.y * 2) >= self.size.y:
             midIndex = self.size.y * (self.indexToPos(index).x + 1) - self.size.y / 2
             return (midIndex - index) * 2 + index - 1
         else:
