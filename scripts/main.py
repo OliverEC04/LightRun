@@ -69,7 +69,7 @@ class Strip:
                     # * self.tileHeight + i
 
                     if self.seriesConnection:
-                        stripIndex = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y))) * self.tileHeight + i)
+                        stripIndex = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y)) * self.tileHeight + i))
                     else:
                         stripIndex = math.floor(self.posToIndex(Vector2(x, y)) * self.tileHeight + i)
 
