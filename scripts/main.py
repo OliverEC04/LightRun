@@ -59,13 +59,17 @@ class Strip:
                     self.track[x][y] = self.track[x][y + 1]
                 
                 # index = self.posToIndex(Vector2(x, y))
-                index = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y))))
-                print(index)
-                self.led.setPixelColor(index, self.track[x][y].value)
+                # index = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y))))
+                # print(index)
+                # self.led.setPixelColor(index, self.track[x][y].value)
 
-                # stripIndex = self.posToIndex(Vector2(x, y)) + self.tick % self.tileHeight
-                # for i in range(self.tileHeight):
-                #     self.led.setPixelColor(stripIndex, self.track[x][y].value)
+                if self.seriesConnection:
+                    stripIndex = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y)))) + self.tick % self.tileHeight
+                else:
+                    stripIndex = math.floor(self.posToIndex(Vector2(x, y))) + self.tick % self.tileHeight
+                    
+                for i in range(self.tileHeight):
+                    self.led.setPixelColor(stripIndex, self.track[x][y].value)
 
         # trackIndex = 0
         # for i in range(self.count - 1):
