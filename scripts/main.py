@@ -68,29 +68,6 @@ class Strip:
                 for y in range(len(self.track[x]) - 1):
                     self.track[x][y] = self.track[x][y + 1]
 
-        # Draw to strips
-        # for x in range(len(self.track)):
-        #     for y in range(len(self.track[x])):
-                
-                # index = self.posToIndex(Vector2(x, y))
-
-                # index = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y))))
-                # print(index)
-                # self.led.setPixelColor(index, self.track[x][y].value)
-                    
-                # for i in range(self.tileHeight):
-                #     trackOffset = self.tick % self.tileHeight
-                #     # * self.tileHeight + i
-
-                #     if self.seriesConnection:
-                #         stripIndex = math.floor(self.indexToSeries(self.posToIndex(Vector2(x, y)) * self.tileHeight + i))
-                #         print("x", x, "y", y, "i", i, "PtI", self.posToIndex(Vector2(x, y)), "SI", stripIndex)
-
-                #     else:
-                #         stripIndex = math.floor(self.posToIndex(Vector2(x, y)) * self.tileHeight + i)
-
-                #     self.led.setPixelColor(stripIndex, self.track[x][y].value)
-
         # Draw track to strips
         for x in range(self.size.x):
             for y in range(self.size.y):
@@ -102,18 +79,6 @@ class Strip:
                     stripIndex = math.floor(posIndex - self.tick % self.tileHeight)
 
                 self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
-
-        # trackIndex = 0
-        # for i in range(self.count - 1):
-        #     position = self.indexToPos(i)
-        #     trackOffset = self.tick % self.tileHeight
-
-        #     print(position.x, trackIndex + trackOffset)
-        #     self.led.setPixelColor(i, self.track[position.x][trackIndex + trackOffset].value)
-        #     self.led.show()
-
-        #     if i % self.tileHeight == 0:
-        #         trackIndex += 1
 
         self.led.show()
 
