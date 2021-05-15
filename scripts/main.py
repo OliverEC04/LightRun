@@ -32,6 +32,8 @@ class Strip:
         self.count = size.x * size.y
         self.led = Adafruit_NeoPixel(self.count, pin, 800000, 10, False, brightness, 0)
 
+
+
         for x in range(self.size.x):
             self.track.append([])
 
@@ -79,7 +81,9 @@ class Strip:
 
     def queueSegment(self, segment):
         for i in range(self.size.x):
+            self.track[i].extend(Tile.Empt)
             self.track[i].extend(segment.arr[i])
+            self.track[i].extend(Tile.Empt)
 
     def posToIndex(self, position):
         return position.x * self.size.y + position.y % self.size.y
