@@ -54,10 +54,12 @@ class Strip:
             for y in range(len(self.track[x])):
                 if self.tick % self.tileHeight == 0 and y < len(self.track[x]) - 1:
                     self.track[x][y] = self.track[x][y + 1]
+                
+                self.led.setPixelColor(self.posToIndex(Vector2(x, y)) * 5, self.track[x][y].value)
 
-                for i in range(self.tileHeight):
-                    stripIndex = self.posToIndex(Vector2(x, y)) + self.tick % self.tileHeight
-                    self.led.setPixelColor(stripIndex, self.track[x][y].value)
+                # stripIndex = self.posToIndex(Vector2(x, y)) + self.tick % self.tileHeight
+                # for i in range(self.tileHeight):
+                #     self.led.setPixelColor(stripIndex, self.track[x][y].value)
 
         # trackIndex = 0
         # for i in range(self.count - 1):
