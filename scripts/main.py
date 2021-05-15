@@ -23,10 +23,11 @@ class Segment:
         self.arr = segmentArray
 
 class Strip:
-    def __init__(self, size, pin, brightness, moveSpeed, tileHeight):
+    def __init__(self, size, pin, brightness, moveSpeed, tileHeight, seriesConnection = True):
         self.size = size
         self.moveSpeed = moveSpeed
         self.tileHeight = tileHeight
+        self.seriesConnection = seriesConnection
         self.tick = 0
         self.track = []
         self.count = size.x * size.y
@@ -57,7 +58,8 @@ class Strip:
                 if self.tick % self.tileHeight == 0 and y < len(self.track[x]) - 1:
                     self.track[x][y] = self.track[x][y + 1]
                 
-                self.led.setPixelColor(self.posToIndex(Vector2(x, y)) * 5, self.track[x][y].value)
+                index = self.indexToSeries(self.posToIndex(Vector2(x, y)) * 5)
+                self.led.setPixelColor(index, self.track[x][y].value)
 
                 # stripIndex = self.posToIndex(Vector2(x, y)) + self.tick % self.tileHeight
                 # for i in range(self.tileHeight):
@@ -90,6 +92,12 @@ class Strip:
 
     def indexToPos(self, index):
         return Vector2(math.floor(index / self.size.y), index % self.size.y)
+
+    def indexToSeries(self, index):
+        if index % (self.size.y * 2) > self.size.y:
+            return ((self.size.y * (self.indexToPos(index).x + 1) - self.size.y / 2) - index) * 2 + index
+        else:
+            return index
 
 class Database:
     def __init__(self, path):
@@ -127,7 +135,7 @@ BTNLEDPIN = 5
 BUZZPIN = 16
 PRESSRIGHTPIN = 0
 PRESSLEFTPIN = 1
-STRIP = Strip(Vector2(5, 60), 18, 50, 5, 5)
+STRIP = Strip(Vector2(5, 60), 18, 50, 5, 5, True)
 DATABASE = Database("../assets/database.db")
 SEGMENT1 = Segment([
     [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
