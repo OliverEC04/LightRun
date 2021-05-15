@@ -48,8 +48,8 @@ class Strip:
     def draw(self):
         # Move track down
         if (self.tick % self.tileHeight == 0):
-            for x in range(len(self.track) - 1):
-                for y in range(len(self.track[x]) - 1):
+            for x in range(len(self.track)):
+                for y in range(len(self.track[x])):
                     self.track[x][y] = self.track[x][y + 1]
 
         # Draw to strips
