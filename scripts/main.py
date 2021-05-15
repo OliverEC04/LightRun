@@ -7,7 +7,7 @@ from rpi_ws281x import *
 
 # Enums
 class Tile(Enum):
-    Empt = Color(1, 1, 1)
+    Empt = Color(10, 10, 10)
     User = Color(0, 255, 0)
     Wall = Color(255, 0, 0)
     Hole = Color(0, 0, 255)
