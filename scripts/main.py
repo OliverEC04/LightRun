@@ -84,7 +84,7 @@ class Strip:
                 else:
                     stripIndex = math.floor(self.posToIndex(position))
 
-                self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
+                self.led.setPixelColor(stripIndex + self.tick % self.tileHeight, self.track[x][math.floor(y / self.tileHeight)].value)
 
         # trackIndex = 0
         # for i in range(self.count - 1):
