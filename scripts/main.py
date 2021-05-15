@@ -5,6 +5,11 @@ import math
 from enum import Enum
 from rpi_ws281x import *
 
+"""
+TODO:
+ * Transition på LEDer måske
+"""
+
 # Enums
 class Tile(Enum):
     Empt = Color(10, 10, 10)
@@ -33,8 +38,6 @@ class Strip:
         self.count = size.x * size.y
         self.led = Adafruit_NeoPixel(self.count, pin, 800000, 10, False, brightness, 0)
 
-
-
         for x in range(self.size.x):
             self.track.append([])
 
@@ -46,6 +49,12 @@ class Strip:
         self.led.begin()
 
     def draw(self):
+        self.tick += 1
+
+        # Limit to moveSpeed
+        if self.tick % self.moveSpeed != 0:
+            return
+
         # Move track down
         if (self.tick % self.tileHeight == 0):
             for x in range(len(self.track)):
@@ -75,14 +84,15 @@ class Strip:
 
                 #     self.led.setPixelColor(stripIndex, self.track[x][y].value)
 
+        # Draw track to strips
         for x in range(self.size.x):
             for y in range(self.size.y):
 
-                position = Vector2(x, y)
+                posIndex = self.posToIndex(Vector2(x, y))
                 if self.seriesConnection:
-                    stripIndex = math.floor(self.indexToSeries(self.posToIndex(position) - self.tick % self.tileHeight))
+                    stripIndex = math.floor(self.indexToSeries(posIndex - self.tick % self.tileHeight))
                 else:
-                    stripIndex = math.floor(self.posToIndex(position) - self.tick % self.tileHeight)
+                    stripIndex = math.floor(posIndex - self.tick % self.tileHeight)
 
                 self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
 
@@ -98,9 +108,7 @@ class Strip:
         #     if i % self.tileHeight == 0:
         #         trackIndex += 1
 
-        self.led.show()        
-
-        self.tick += 1
+        self.led.show()
 
     def queueSegment(self, segment):
         for i in range(self.size.x):
@@ -157,6 +165,7 @@ BTNLEDPIN = 5
 BUZZPIN = 16
 PRESSRIGHTPIN = 0
 PRESSLEFTPIN = 1
+LOOPSPEED = 1 # How long each loop takes (seconds)
 STRIP = Strip(Vector2(5, 60), 18, 50, 5, 5, True)
 DATABASE = Database("../assets/database.db")
 SEGMENT1 = Segment([
@@ -185,7 +194,7 @@ while runLoop:
 
     tick += 1
     print("frame tid:", time.time() - startTime)
-    time.sleep(max(1 - (time.time() - startTime), 0))
+    time.sleep(max(LOOPSPEED - (time.time() - startTime), 0))
 
 
 
