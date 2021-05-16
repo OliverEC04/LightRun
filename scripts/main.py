@@ -157,7 +157,7 @@ class Strip:
                 if y < self.tileHeight:
                     trackOffset = 0
                 else:
-                    trackOffset = round((self.tick % self.tileHeight) / self.moveSpeed)
+                    trackOffset = round((self.tick % self.tileHeight) / (self.moveSpeed / self.tileHeight))
 
                 self.draw(Vector2(x, y - trackOffset), self.track[x][math.floor(y / self.tileHeight)])
 
