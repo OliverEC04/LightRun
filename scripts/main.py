@@ -304,7 +304,8 @@ segments = [
     ]),
 ]
 
-strip.queueSegment(segments[0])
+# strip.queueSegment(segments[0])
+strip.loopSegments(segments)
 user.bindControls(pressRight, pressLeft)
 
 # Loop
