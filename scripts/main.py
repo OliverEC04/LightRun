@@ -132,7 +132,7 @@ class Strip:
                 else:
                     stripIndex = math.floor(posIndex)
 
-                self.draw(Vector2(x, y), self.track[x][math.floor(y / self.tileHeight)])
+                self.draw(Vector2(x, y - trackOffset), self.track[x][math.floor(y / self.tileHeight)])
                 # self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
 
         # Draw user
