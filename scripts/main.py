@@ -39,6 +39,7 @@ LOOPSPEED = .1 # How long each loop takes (seconds)
 tick = 0
 hitTick = 0
 runLoop = 0
+startGame = 0
 strip = 0
 database = 0
 segments = 0
@@ -192,11 +193,11 @@ def initialize():
     strip.addUser(User())
 
 def resetGame():
-    global runLoop
-    runLoop = False
+    startGame = False
 
     strip.reset()
     initialize()
+    strip.draw()
 
 # Variables
 tick = 0
@@ -214,6 +215,9 @@ segments = [
     ]),
 ]
 
+# Temp
+startGame = True
+
 
 initialize()
 
@@ -221,7 +225,8 @@ initialize()
 while runLoop:
     startTime = time.time()
 
-    strip.draw()
+    if startGame:
+        strip.draw()
 
     tick += 1
     print("frame tid:", time.time() - startTime)
