@@ -219,20 +219,9 @@ def initialize():
     global pressLeft
     global segments
 
-    strip.queueSegment(segments[0])
-    # STRIP.queueSegment(SEGMENT1)
-    # STRIP.queueSegment(SEGMENT1)
-    strip.addUser(User(strip))
-
-    GPIO.setmode(GPIO.BOARD)
-
     runLoop = True
     strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
     database = Database("../assets/database.db")
-    pressLed = BinOut(29)
-    btn = BinIn(31)
-    pressRight = BinIn(35)
-    pressLeft = BinIn(33)
     segments = [
         Segment([
             [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
@@ -243,6 +232,17 @@ def initialize():
         ]),
     ]
 
+    strip.queueSegment(segments[0])
+    # STRIP.queueSegment(SEGMENT1)
+    # STRIP.queueSegment(SEGMENT1)
+    strip.addUser(User(strip))
+
+    GPIO.setmode(GPIO.BOARD)
+
+    pressLed = BinOut(29)
+    btn = BinIn(31)
+    pressRight = BinIn(35)
+    pressLeft = BinIn(33)
 
 def resetGame():
     global startGame
