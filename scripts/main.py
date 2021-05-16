@@ -23,10 +23,10 @@ TODO:
 
 # Enums
 class Tile(Enum):
-    Empt = Color(10, 10, 10)
+    Empt = Color(5, 5, 5)
     User = Color(0, 255, 0)
-    Wall = Color(255, 0, 0)
-    Hole = Color(0, 0, 255)
+    Wall = Color(200, 0, 0)
+    Hole = Color(0, 0, 180)
 
 # Constants
 LOOPSPEED = .1 # How long each loop takes (seconds)
@@ -168,6 +168,9 @@ class Strip:
             self.track[i].append(Tile.Empt)
             self.track[i].extend(segment.arr[i])
             self.track[i].append(Tile.Empt)
+
+    def loopSegments(self, segments):
+
 
     def addUser(self, user):
         self.user = user
