@@ -29,11 +29,6 @@ class Tile(Enum):
     Hole = Color(0, 0, 255)
 
 # Constants
-BTNPIN = 31
-BTNLEDPIN = 29
-BUZZPIN = 16
-PRESSRIGHTPIN = 35
-PRESSLEFTPIN = 33
 LOOPSPEED = .1 # How long each loop takes (seconds)
 
 # Declaring variables
@@ -44,12 +39,35 @@ startGame = 0
 strip = 0
 database = 0
 segments = 0
+pressLed = 0
+buzz = 0
+btn = 0
+pressRight = 0
+pressLeft = 0
 
 # Classes
 class Vector2:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+class BinIn:
+    def __init__(self, pin):
+        self.pin = pin
+
+        GPIO.setup(self.pin, GPIO.IN)
+    
+    def pressed(self):
+        return GPIO.input(self.pin) == 1
+
+class BinOut:
+    def __init__(self, pin):
+        self.pin = pin
+
+        GPIO.setup(self.pin, GPIO.OUT)
+
+    def write(self, output):
+        GPIO.output(self.pin, output)
 
 class Segment:
     def __init__(self, segmentArray):
@@ -198,10 +216,6 @@ def initialize():
     strip.addUser(User(strip))
 
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(BTNLEDPIN, GPIO.OUT)
-    GPIO.setup(BTNPIN, GPIO.IN)
-    GPIO.setup(PRESSRIGHTPIN, GPIO.IN)
-    GPIO.setup(PRESSLEFTPIN, GPIO.IN)
 
 
 def resetGame():
@@ -219,6 +233,10 @@ hitTick = 0
 runLoop = True
 strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
 database = Database("../assets/database.db")
+pressLed = BinOut(29)
+btn = BinIn(31)
+pressRight = BinIn(35)
+pressLeft = BinIn(33)
 segments = [
     Segment([
         [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
@@ -242,11 +260,12 @@ while runLoop:
 
     if startGame:
         strip.draw()
-
-    GPIO.output(BTNLEDPIN, tick % 2)
-    print(GPIO.input(BTNPIN))
-    print(GPIO.input(PRESSRIGHTPIN))
-    print(GPIO.input(PRESSLEFTPIN))
+    else:
+        startGame = btn.pressed()
+        if startGame:
+            pressLed.write(False)
+        else:
+            pressLed.write(tick % 2)
 
     tick += 1
     print("frame tid:", time.time() - startTime)
