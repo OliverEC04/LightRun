@@ -47,6 +47,9 @@ class User:
     def moveLeft(self):
         pass
 
+    def collide(self):
+        resetGame()
+
 class Strip:
     def __init__(self, size, pin, brightness, moveSpeed, tileHeight, seriesConnection = True):
         self.size = size
@@ -106,7 +109,7 @@ class Strip:
 
         # Collision detection
         if self.track[self.user.position][1] != Tile.Empt:
-            print("collision")
+            self.user.collide()
 
     def queueSegment(self, segment):
         for i in range(self.size.x):
@@ -161,6 +164,18 @@ class Database:
                 sqliteConnection.close()
                 print("The SQLite connection is closed")
 
+# Functions
+def initialize():
+    strip.queueSegment(SEGMENT1)
+    # STRIP.queueSegment(SEGMENT1)
+    # STRIP.queueSegment(SEGMENT1)
+    strip.addUser(User())
+
+def resetGame():
+    strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
+
+    initialize()
+
 # Constants
 BTNPIN = 6
 BTNLEDPIN = 5
@@ -168,7 +183,6 @@ BUZZPIN = 16
 PRESSRIGHTPIN = 0
 PRESSLEFTPIN = 1
 LOOPSPEED = 1 # How long each loop takes (seconds)
-STRIP = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
 DATABASE = Database("../assets/database.db")
 SEGMENT1 = Segment([
     [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
@@ -182,18 +196,16 @@ SEGMENT1 = Segment([
 tick = 0
 hitTick = 0
 runLoop = True
+strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
 
-# Intialize
-STRIP.queueSegment(SEGMENT1)
-# STRIP.queueSegment(SEGMENT1)
-# STRIP.queueSegment(SEGMENT1)
-STRIP.addUser(User())
+
+initialize()
 
 # Loop
 while runLoop:
     startTime = time.time()
 
-    STRIP.draw()
+    strip.draw()
 
     tick += 1
     print("frame tid:", time.time() - startTime)
