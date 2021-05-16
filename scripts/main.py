@@ -48,13 +48,14 @@ class Strip:
         self.count = size.x * size.y
         self.led = Adafruit_NeoPixel(self.count, pin, 800000, 10, False, brightness, 0)
 
+        # Create empty track
         for x in range(self.size.x):
             self.track.append([])
 
             for y in range(math.ceil(self.size.y / self.tileHeight)):
                 self.track[x].append(Tile.Empt)
 
-        self.track[math.floor(self.size.x / 2)][1] = Tile.User
+        # self.track[math.floor(self.size.x / 2)][1] = Tile.User
 
         self.led.begin()
 
