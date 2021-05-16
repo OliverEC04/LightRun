@@ -1,4 +1,4 @@
-import time
+﻿import time
 import argparse
 import sqlite3
 import math
@@ -9,10 +9,10 @@ from rpi_ws281x import *
 """
 TODO:
  * Movement
-   * Spiller
+   * Spiller ✔
    * Fodplader
-   * Knapper
-   * Dø
+   * Knapper ✔
+   * Dø ✔
    * Hop
  * Pointgivning og scoreboard
    * Optæl point når man spiller
@@ -149,6 +149,14 @@ class Strip:
     def update(self):
         self.tick += 1
 
+        # Loop track
+        try:
+            if (self.tick / (self.moveSpeed / self.tileHeight)) % self.segmentsEnd == 0:
+                print("welcome to the end")
+
+        except:
+            print("No segment loop")
+
         # Move track down
         if self.tick % self.tileHeight == 0 and self.tick % self.moveSpeed == 0:
             for x in range(len(self.track)):
@@ -174,7 +182,19 @@ class Strip:
             self.track[i].append(Tile.Empt)
 
     def loopSegments(self, segments):
-        return
+        self.segmentsCombined = []
+
+        for x in range(self.size.x):
+            self.segmentsCombined.append([])
+            
+            for i in range(len(segments)):
+                self.segmentsCombined[x].append(Tile.Empt)
+                self.segmentsCombined[x].extend(self.segmentsCombined[i].arr[x])
+                self.segmentsCombined[x].append(Tile.Empt)
+        
+        self.queueSegment(Segment(self.segmentsCombined))
+
+        self.segmentsEnd = len(self.segmentsCombined[0])
 
     def addUser(self, user):
         self.user = user
