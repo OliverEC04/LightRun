@@ -37,6 +37,16 @@ class Segment:
     def __init__(self, segmentArray):
         self.arr = segmentArray
 
+class User:
+    def __init__(self):
+        pass
+    
+    def moveRight(self):
+        pass
+
+    def moveLeft(self):
+        pass
+
 class Strip:
     def __init__(self, size, pin, brightness, moveSpeed, tileHeight, seriesConnection = True):
         self.size = size
@@ -89,6 +99,8 @@ class Strip:
 
                 self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
 
+        self.led.setPixelColor(self.posToIndex(Vector2(self.user.position, 3)), Tile.User)
+
         self.led.show()
 
     def queueSegment(self, segment):
@@ -96,6 +108,10 @@ class Strip:
             self.track[i].append(Tile.Empt)
             self.track[i].extend(segment.arr[i])
             self.track[i].append(Tile.Empt)
+
+    def addUser(self, user):
+        self.user = user
+        self.user.position = math.floor(self.size.x / 2)
 
     def posToIndex(self, position):
         return position.x * self.size.y + position.y % self.size.y
@@ -166,6 +182,7 @@ runLoop = True
 STRIP.queueSegment(SEGMENT1)
 # STRIP.queueSegment(SEGMENT1)
 # STRIP.queueSegment(SEGMENT1)
+STRIP.addUser(User())
 
 # Loop
 while runLoop:
