@@ -8,8 +8,11 @@ from rpi_ws281x import *
 """
 TODO:
  * Movement
+   * Spiller
    * Fodplader
    * Knapper
+   * Dø
+   * Hop
  * Pointgivning og scoreboard
    * Optæl point når man spiller
    * Skriv pointene til database
@@ -77,6 +80,7 @@ class Strip:
                     trackOffset = self.tick % self.tileHeight
 
                 posIndex = self.posToIndex(Vector2(x, y)) - trackOffset
+
                 if self.seriesConnection:
                     stripIndex = math.floor(self.indexToSeries(posIndex))
                 else:
@@ -142,14 +146,14 @@ BUZZPIN = 16
 PRESSRIGHTPIN = 0
 PRESSLEFTPIN = 1
 LOOPSPEED = 1 # How long each loop takes (seconds)
-STRIP = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
+STRIP = Strip(Vector2(3, 60), 18, 50, 1, 5, True)
 DATABASE = Database("../assets/database.db")
 SEGMENT1 = Segment([
     [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
     [Tile.Empt, Tile.Empt, Tile.Empt, Tile.Hole],
-    [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Empt],
+    [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Empt],"""
     [Tile.Empt, Tile.Hole, Tile.Empt, Tile.Wall],
-    [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
+    [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]"""
 ])
 
 # Variables
