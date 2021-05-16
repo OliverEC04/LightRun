@@ -29,7 +29,7 @@ class Tile(Enum):
     Hole = Color(0, 0, 255)
 
 # Constants
-LOOPSPEED = 1 # How long each loop takes (seconds)
+LOOPSPEED = .1 # How long each loop takes (seconds)
 
 # Declaring variables
 tick = 0
@@ -125,18 +125,19 @@ class Strip:
                 else:
                     trackOffset = self.tick % self.tileHeight
 
-                posIndex = self.posToIndex(Vector2(x, y)) - trackOffset
+                # posIndex = self.posToIndex(Vector2(x, y)) - trackOffset
 
-                if self.seriesConnection:
-                    stripIndex = math.floor(self.indexToSeries(posIndex))
-                else:
-                    stripIndex = math.floor(posIndex)
+                # if self.seriesConnection:
+                #     stripIndex = math.floor(self.indexToSeries(posIndex))
+                # else:
+                #     stripIndex = math.floor(posIndex)
 
                 self.draw(Vector2(x, y - trackOffset), self.track[x][math.floor(y / self.tileHeight)])
                 # self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
 
         # Draw user
-        self.led.setPixelColor(self.posToIndex(Vector2(self.user.position, self.tileHeight)), Tile.User.value)
+        self.draw(Vector2(self.user.position, self.tileHeight), Tile.User)
+        # self.led.setPixelColor(self.posToIndex(Vector2(self.user.position, self.tileHeight)), Tile.User.value)
 
         self.led.show()
 
