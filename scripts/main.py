@@ -2,9 +2,8 @@ import time
 import argparse
 import sqlite3
 import math
-from enum import Enum
-# from grovepi import *
 import RPi.GPIO as GPIO
+from enum import Enum
 from rpi_ws281x import *
 
 """
@@ -201,6 +200,7 @@ def initialize():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(BTNLEDPIN, GPIO.OUT)
 
+
 def resetGame():
     global startGame
 
@@ -240,7 +240,7 @@ while runLoop:
     if startGame:
         strip.draw()
 
-    GPIO.output(BTNLEDPIN, 1)
+    GPIO.output(BTNLEDPIN, tick % 2)
 
     tick += 1
     print("frame tid:", time.time() - startTime)
