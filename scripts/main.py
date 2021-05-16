@@ -257,8 +257,6 @@ strip.queueSegment(segments[0])
 while runLoop:
     startTime = time.time()
 
-    user.update()
-
     if startGame:
         strip.update()
     else:
@@ -267,6 +265,8 @@ while runLoop:
             pressLed.write(False)
         else:
             pressLed.write(tick % 2)
+    
+    user.update()
 
     tick += 1
     print("frame tid:", time.time() - startTime)
