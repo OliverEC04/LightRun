@@ -170,7 +170,7 @@ class Strip:
             self.track[i].append(Tile.Empt)
 
     def loopSegments(self, segments):
-
+        return
 
     def addUser(self, user):
         self.user = user
