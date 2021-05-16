@@ -189,7 +189,7 @@ class Strip:
             
             for i in range(len(segments)):
                 self.segmentsCombined[x].append(Tile.Empt)
-                self.segmentsCombined[x].extend(self.segmentsCombined[i].arr[x])
+                self.segmentsCombined[x].extend(segments[i].arr[x])
                 self.segmentsCombined[x].append(Tile.Empt)
         
         self.queueSegment(Segment(self.segmentsCombined))
