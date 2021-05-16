@@ -180,7 +180,6 @@ class Strip:
         for i in range(self.size.x):
             self.track[i].append(Tile.Empt)
             self.track[i].extend(segment.arr[i])
-            self.track[i].append(Tile.Empt)
 
     def loopSegments(self, segments):
         self.segmentsCombined = []
@@ -291,7 +290,7 @@ btn = BinIn(31)
 pressRight = BinIn(35)
 pressLeft = BinIn(33)
 database = Database("../assets/database.db")
-strip = Strip(Vector2(5, 60), 18, 50, 20, 5, True)
+strip = Strip(Vector2(5, 60), 18, 50, 5, 5, True)
 user = User(strip)
 segments = [
     Segment([
