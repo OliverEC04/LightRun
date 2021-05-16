@@ -32,8 +32,8 @@ class Tile(Enum):
 BTNPIN = 31
 BTNLEDPIN = 29
 BUZZPIN = 16
-PRESSRIGHTPIN = 0
-PRESSLEFTPIN = 1
+PRESSRIGHTPIN = 35
+PRESSLEFTPIN = 33
 LOOPSPEED = .1 # How long each loop takes (seconds)
 
 # Declaring variables
@@ -200,6 +200,8 @@ def initialize():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(BTNLEDPIN, GPIO.OUT)
     GPIO.setup(BTNPIN, GPIO.IN)
+    GPIO.setup(PRESSRIGHTPIN, GPIO.IN)
+    GPIO.setup(PRESSLEFTPIN, GPIO.IN)
 
 
 def resetGame():
@@ -243,6 +245,8 @@ while runLoop:
 
     GPIO.output(BTNLEDPIN, tick % 2)
     print(GPIO.input(BTNPIN))
+    print(GPIO.input(PRESSRIGHTPIN))
+    print(GPIO.input(PRESSLEFTPIN))
 
     tick += 1
     print("frame tid:", time.time() - startTime)
