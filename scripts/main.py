@@ -27,6 +27,22 @@ class Tile(Enum):
     Wall = Color(255, 0, 0)
     Hole = Color(0, 0, 255)
 
+# Constants
+BTNPIN = 6
+BTNLEDPIN = 5
+BUZZPIN = 16
+PRESSRIGHTPIN = 0
+PRESSLEFTPIN = 1
+LOOPSPEED = .1 # How long each loop takes (seconds)
+
+# Declaring variables
+tick = 0
+hitTick = 0
+runLoop = 0
+strip = 0
+database = 0
+segments = 0
+
 # Classes
 class Vector2:
     def __init__(self, x, y):
@@ -170,7 +186,7 @@ class Database:
 
 # Functions
 def initialize():
-    strip.queueSegment(SEGMENT1)
+    strip.queueSegment(segments[0])
     # STRIP.queueSegment(SEGMENT1)
     # STRIP.queueSegment(SEGMENT1)
     strip.addUser(User())
@@ -182,27 +198,21 @@ def resetGame():
 
     initialize()
 
-# Constants
-BTNPIN = 6
-BTNLEDPIN = 5
-BUZZPIN = 16
-PRESSRIGHTPIN = 0
-PRESSLEFTPIN = 1
-LOOPSPEED = .1 # How long each loop takes (seconds)
-DATABASE = Database("../assets/database.db")
-SEGMENT1 = Segment([
-    [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
-    [Tile.Empt, Tile.Empt, Tile.Empt, Tile.Hole],
-    [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Empt],
-    [Tile.Empt, Tile.Hole, Tile.Empt, Tile.Wall],
-    [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
-])
-
 # Variables
 tick = 0
 hitTick = 0
 runLoop = True
 strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
+database = Database("../assets/database.db")
+segments = [
+    Segment([
+        [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
+        [Tile.Empt, Tile.Empt, Tile.Empt, Tile.Hole],
+        [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Empt],
+        [Tile.Empt, Tile.Hole, Tile.Empt, Tile.Wall],
+        [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
+    ]),
+]
 
 
 initialize()
