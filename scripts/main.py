@@ -71,7 +71,7 @@ class Strip:
         # Draw track to strips
         for x in range(self.size.x):
             for y in range(self.size.y):
-                if y == 0:
+                if y < 2:
                     trackOffset = 0
                 else:
                     trackOffset = self.tick % self.tileHeight
