@@ -104,7 +104,7 @@ class Strip:
         self.led.begin()
         self.initializeTrack()
 
-    def draw(self):
+    def update(self):
         self.tick += 1
 
         # Limit to moveSpeed
@@ -132,7 +132,8 @@ class Strip:
                 else:
                     stripIndex = math.floor(posIndex)
 
-                self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
+                self.draw(Vector2(x, y), self.track[x][math.floor(y / self.tileHeight)])
+                # self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
 
         # Draw user
         self.led.setPixelColor(self.posToIndex(Vector2(self.user.position, self.tileHeight)), Tile.User.value)
@@ -169,6 +170,14 @@ class Strip:
                     self.led.setPixelColor(self.posToIndex(Vector2(x, y * self.tileHeight + i)), Tile.Empt.value)
 
         self.led.show()
+
+    def draw(self, position, tile):
+        if self.seriesConnection:
+            index = math.floor(self.indexToSeries(self.posToIndex(position)))
+        else:
+            index = math.floor(self.posToIndex(position))
+
+        self.led.setPixelColor(index, tile.value)
 
     def posToIndex(self, position):
         return position.x * self.size.y + position.y % self.size.y
