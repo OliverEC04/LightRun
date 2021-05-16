@@ -153,7 +153,6 @@ class Strip:
         try:
             if (self.tick / (self.moveSpeed / self.tileHeight)) % self.segmentsEnd == 0:
                 self.queueSegment(Segment(self.segmentsCombined))
-                print("welcome to the end")
 
         except:
             print("No segment loop")
@@ -318,6 +317,8 @@ while runLoop:
             pressLed.write(False)
         else:
             pressLed.write(tick % 2)
+        
+        print(input("Indtast navn"))
     
     user.update()
 
