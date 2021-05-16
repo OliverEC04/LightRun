@@ -82,6 +82,7 @@ class User:
     def update(self):
         # Draw to strip
         self.strip.draw(self.position, Tile.User)
+        self.strip.led.show()
 
         # Collision detection
         if self.strip.track[self.position.x][1] != Tile.Empt:
