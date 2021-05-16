@@ -30,6 +30,7 @@ class Tile(Enum):
 
 # Constants
 LOOPSPEED = .1 # How long each loop takes (seconds)
+ENABLENAME = False
 
 # Declaring variables
 tick = 0
@@ -318,7 +319,8 @@ while runLoop:
         else:
             pressLed.write(tick % 2)
         
-        print(input("Indtast navn"))
+        if ENABLENAME:
+            print(input("Enter name: "))
     
     user.update()
 
