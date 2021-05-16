@@ -75,17 +75,25 @@ class Segment:
 
 class User:
     def __init__(self, strip):
-        self.position = 0
-        self.jump = False
         self.strip = strip
+        self.position = Vector2(math.floor(self.strip.size.x / 2), self.strip.tileHeight)
+        self.jump = False
     
+    def update(self):
+        # Draw to strip
+        self.strip.draw(self.position)
+
+        # Collision detection
+        if self.strip.track[self.position.x][1] != Tile.Empt:
+            self.collide()
+
     def moveRight(self):
-        if self.position > 0:
-            self.position -= 1
+        if self.position.x > 0:
+            self.position.x -= 1
 
     def moveLeft(self):
-        if self.position < self.strip.size.x - 1:
-            self.position += 1
+        if self.position.x < self.strip.size.x - 1:
+            self.position.x += 1
 
     def collide(self):
         resetGame()
@@ -125,25 +133,9 @@ class Strip:
                 else:
                     trackOffset = self.tick % self.tileHeight
 
-                # posIndex = self.posToIndex(Vector2(x, y)) - trackOffset
-
-                # if self.seriesConnection:
-                #     stripIndex = math.floor(self.indexToSeries(posIndex))
-                # else:
-                #     stripIndex = math.floor(posIndex)
-
                 self.draw(Vector2(x, y - trackOffset), self.track[x][math.floor(y / self.tileHeight)])
-                # self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
 
-        # Draw user
-        self.draw(Vector2(self.user.position, self.tileHeight), Tile.User)
-        # self.led.setPixelColor(self.posToIndex(Vector2(self.user.position, self.tileHeight)), Tile.User.value)
-
-        self.led.show()
-
-        # Collision detection
-        if self.track[self.user.position][1] != Tile.Empt:
-            self.user.collide()
+        self.led.show()        
 
     def queueSegment(self, segment):
         for i in range(self.size.x):
