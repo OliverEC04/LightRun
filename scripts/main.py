@@ -105,7 +105,7 @@ class Strip:
         self.led.show()
 
         # Collision detection
-        if self.track[self.user.position][0] != Tile.Empt:
+        if self.track[self.user.position][1] != Tile.Empt:
             print("collision")
 
     def queueSegment(self, segment):
