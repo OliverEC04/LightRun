@@ -29,7 +29,7 @@ class Tile(Enum):
     Hole = Color(0, 0, 255)
 
 # Constants
-BTNPIN = 6
+BTNPIN = 31
 BTNLEDPIN = 29
 BUZZPIN = 16
 PRESSRIGHTPIN = 0
@@ -199,6 +199,7 @@ def initialize():
 
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(BTNLEDPIN, GPIO.OUT)
+    GPIO.setup(BTNPIN, GPIO.IN)
 
 
 def resetGame():
@@ -241,6 +242,7 @@ while runLoop:
         strip.draw()
 
     GPIO.output(BTNLEDPIN, tick % 2)
+    print(GPIO.input(BTNPIN))
 
     tick += 1
     print("frame tid:", time.time() - startTime)
