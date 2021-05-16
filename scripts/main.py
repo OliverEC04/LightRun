@@ -188,7 +188,7 @@ BTNLEDPIN = 5
 BUZZPIN = 16
 PRESSRIGHTPIN = 0
 PRESSLEFTPIN = 1
-LOOPSPEED = 1 # How long each loop takes (seconds)
+LOOPSPEED = .1 # How long each loop takes (seconds)
 DATABASE = Database("../assets/database.db")
 SEGMENT1 = Segment([
     [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
