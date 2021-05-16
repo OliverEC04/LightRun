@@ -192,9 +192,10 @@ def initialize():
     strip.addUser(User())
 
 def resetGame():
+    global runLoop
     runLoop = False
-    strip.reset()
 
+    strip.reset()
     initialize()
 
 # Variables
