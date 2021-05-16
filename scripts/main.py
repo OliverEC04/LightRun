@@ -4,6 +4,7 @@ import sqlite3
 import math
 from enum import Enum
 from grovepi import *
+import RPi.GPIO as GPIO
 from rpi_ws281x import *
 
 """
@@ -197,7 +198,8 @@ def initialize():
     # STRIP.queueSegment(SEGMENT1)
     strip.addUser(User(strip))
 
-    pinMode(BTNLEDPIN,"OUTPUT")
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(BTNLEDPIN, GPIO.OUT)
 
 def resetGame():
     global startGame
@@ -238,7 +240,7 @@ while runLoop:
     if startGame:
         strip.draw()
 
-    digitalWrite(BTNLEDPIN, 0)
+    GPIO.output(BTNLEDPIN, 0)
 
     tick += 1
     print("frame tid:", time.time() - startTime)
