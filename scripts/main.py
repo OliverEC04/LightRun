@@ -220,7 +220,7 @@ def resetGame():
     startGame = False
 
     strip.reset()
-    # strip.draw()
+    strip.queueSegment(segments[0])
 
 # Temp
 startGame = True
