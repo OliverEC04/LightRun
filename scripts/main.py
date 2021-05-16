@@ -166,6 +166,8 @@ class Strip:
                 self.track[x].append(Tile.Empt)
                 self.led.setPixelColor(self.posToIndex(Vector2(x, y)), Tile.Empt)
 
+        self.led.show()
+
     def posToIndex(self, position):
         return position.x * self.size.y + position.y % self.size.y
 
