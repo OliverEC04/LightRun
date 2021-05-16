@@ -96,11 +96,14 @@ class User:
                 print("User has no left control!")
 
         # Draw to strip
-        for x in range(self.strip.size.x):
-            if x == self.position.x:
-                self.strip.draw(self.position, Tile.User)
-            else:
-                self.strip.draw(Vector2(x, self.position.y), Tile.Empt)
+        if startGame:
+            self.strip.draw(self.position, Tile.User)
+        else:
+            for x in range(self.strip.size.x):
+                if x == self.position.x:
+                    self.strip.draw(self.position, Tile.User)
+                else:
+                    self.strip.draw(Vector2(x, self.position.y), Tile.Empt)
 
         self.strip.led.show()
 
