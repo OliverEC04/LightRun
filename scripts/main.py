@@ -252,11 +252,12 @@ segments = [
 ]
 
 strip.queueSegment(segments[0])
-strip.addUser(user)
 
 # Loop
 while runLoop:
     startTime = time.time()
+
+    user.update()
 
     if startGame:
         strip.update()
