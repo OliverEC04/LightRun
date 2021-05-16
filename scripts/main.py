@@ -193,6 +193,8 @@ def initialize():
     strip.addUser(User())
 
 def resetGame():
+    global startGame
+    
     startGame = False
 
     strip.reset()
