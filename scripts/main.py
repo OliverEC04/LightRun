@@ -238,7 +238,7 @@ while runLoop:
     if startGame:
         strip.draw()
 
-    digitalWrite(BTNLEDPIN, tick % 2)
+    digitalWrite(BTNLEDPIN, 0)
 
     tick += 1
     print("frame tid:", time.time() - startTime)
