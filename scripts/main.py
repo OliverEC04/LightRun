@@ -96,7 +96,12 @@ class User:
                 print("User has no left control!")
 
         # Draw to strip
-        self.strip.draw(self.position, Tile.User)
+        for x in range(self.strip.size.x):
+            if x == self.position.x:
+                self.strip.draw(self.position, Tile.User)
+            else:
+                self.strip.draw(Vector2(x, self.position.y), Tile.Empt)
+
         self.strip.led.show()
 
         # Collision detection
@@ -141,10 +146,6 @@ class Strip:
     def update(self):
         self.tick += 1
 
-        # Limit to moveSpeed
-        # if self.tick % self.moveSpeed != 0:
-        #     return
-
         # Move track down
         if self.tick % self.tileHeight == 0 and self.tick % self.moveSpeed == 0:
             for x in range(len(self.track)):
@@ -158,7 +159,6 @@ class Strip:
                     trackOffset = 0
                 else:
                     trackOffset = math.floor(self.tick / (self.moveSpeed / self.tileHeight)) % self.tileHeight
-                    print(trackOffset)
 
                 self.draw(Vector2(x, y - trackOffset), self.track[x][math.floor(y / self.tileHeight)])
 
