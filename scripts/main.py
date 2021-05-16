@@ -215,61 +215,44 @@ class Database:
                 print("The SQLite connection is closed")
 
 # Functions
-def initialize():
-    global runLoop
-    global strip
-    global database
-    global pressLed
-    global btn
-    global pressRight
-    global pressLeft
-    global segments
-
-    runLoop = True
-    strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
-    database = Database("../assets/database.db")
-    segments = [
-        Segment([
-            [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
-            [Tile.Empt, Tile.Empt, Tile.Empt, Tile.Hole],
-            [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Empt],
-            [Tile.Empt, Tile.Hole, Tile.Empt, Tile.Wall],
-            [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
-        ]),
-    ]
-
-    strip.queueSegment(segments[0])
-    # STRIP.queueSegment(SEGMENT1)
-    # STRIP.queueSegment(SEGMENT1)
-    strip.addUser(User(strip))
-
-    GPIO.setmode(GPIO.BOARD)
-
-    pressLed = BinOut(29)
-    btn = BinIn(31)
-    pressRight = BinIn(35)
-    pressLeft = BinIn(33)
-
 def resetGame():
     global startGame
 
     startGame = False
 
     strip.reset()
-    initialize()
     strip.draw()
 
 # Variables
 tick = 0
 hitTick = 0
 
-
 # Temp
 startGame = True
 
-
+# Initalize
 print("Tryk CTRL + C for at stoppe programmet")
-initialize()
+GPIO.setmode(GPIO.BOARD)
+
+pressLed = BinOut(29)
+btn = BinIn(31)
+pressRight = BinIn(35)
+pressLeft = BinIn(33)
+database = Database("../assets/database.db")
+strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
+user = User(strip)
+segments = [
+    Segment([
+        [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
+        [Tile.Empt, Tile.Empt, Tile.Empt, Tile.Hole],
+        [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Empt],
+        [Tile.Empt, Tile.Hole, Tile.Empt, Tile.Wall],
+        [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
+    ]),
+]
+
+strip.queueSegment(segments[0])
+strip.addUser(user)
 
 # Loop
 while runLoop:
