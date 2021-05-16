@@ -210,12 +210,38 @@ class Database:
 
 # Functions
 def initialize():
+    global runLoop
+    global strip
+    global database
+    global pressLed
+    global btn
+    global pressRight
+    global pressLeft
+    global segments
+
     strip.queueSegment(segments[0])
     # STRIP.queueSegment(SEGMENT1)
     # STRIP.queueSegment(SEGMENT1)
     strip.addUser(User(strip))
 
     GPIO.setmode(GPIO.BOARD)
+
+    runLoop = True
+    strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
+    database = Database("../assets/database.db")
+    pressLed = BinOut(29)
+    btn = BinIn(31)
+    pressRight = BinIn(35)
+    pressLeft = BinIn(33)
+    segments = [
+        Segment([
+            [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
+            [Tile.Empt, Tile.Empt, Tile.Empt, Tile.Hole],
+            [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Empt],
+            [Tile.Empt, Tile.Hole, Tile.Empt, Tile.Wall],
+            [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
+        ]),
+    ]
 
 
 def resetGame():
@@ -230,22 +256,7 @@ def resetGame():
 # Variables
 tick = 0
 hitTick = 0
-runLoop = True
-strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
-database = Database("../assets/database.db")
-pressLed = BinOut(29)
-btn = BinIn(31)
-pressRight = BinIn(35)
-pressLeft = BinIn(33)
-segments = [
-    Segment([
-        [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
-        [Tile.Empt, Tile.Empt, Tile.Empt, Tile.Hole],
-        [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Empt],
-        [Tile.Empt, Tile.Hole, Tile.Empt, Tile.Wall],
-        [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
-    ]),
-]
+
 
 # Temp
 startGame = True
