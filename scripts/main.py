@@ -268,7 +268,7 @@ btn = BinIn(31)
 pressRight = BinIn(35)
 pressLeft = BinIn(33)
 database = Database("../assets/database.db")
-strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
+strip = Strip(Vector2(5, 60), 18, 50, 5, 5, True)
 user = User(strip)
 segments = [
     Segment([
