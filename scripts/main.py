@@ -3,6 +3,7 @@ import argparse
 import sqlite3
 import math
 from enum import Enum
+from grovepi import *
 from rpi_ws281x import *
 
 """
@@ -55,14 +56,18 @@ class Segment:
         self.arr = segmentArray
 
 class User:
-    def __init__(self):
-        pass
+    def __init__(self, strip):
+        self.position = 0
+        self.jump = False
+        self.strip = strip
     
     def moveRight(self):
-        pass
+        if self.position > 0:
+            self.position -= 1
 
     def moveLeft(self):
-        pass
+        if self.position < self.strip.size.x - 1:
+            self.position += 1
 
     def collide(self):
         resetGame()
@@ -190,11 +195,13 @@ def initialize():
     strip.queueSegment(segments[0])
     # STRIP.queueSegment(SEGMENT1)
     # STRIP.queueSegment(SEGMENT1)
-    strip.addUser(User())
+    strip.addUser(User(strip))
+
+    pinMode(BTNLEDPIN,"OUTPUT")
 
 def resetGame():
     global startGame
-    
+
     startGame = False
 
     strip.reset()
@@ -221,6 +228,7 @@ segments = [
 startGame = True
 
 
+print("Tryk CTRL + C for at stoppe programmet")
 initialize()
 
 # Loop
@@ -229,6 +237,8 @@ while runLoop:
 
     if startGame:
         strip.draw()
+
+    digitalWrite(BTNLEDPIN, tick % 2)
 
     tick += 1
     print("frame tid:", time.time() - startTime)
