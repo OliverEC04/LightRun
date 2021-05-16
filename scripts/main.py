@@ -129,7 +129,7 @@ class Strip:
         self.user = user
         self.user.position = math.floor(self.size.x / 2)
 
-    def clear(self):
+    def reset(self):
         self.initializeTrack()
 
     def initializeTrack(self):
@@ -193,8 +193,7 @@ def initialize():
 
 def resetGame():
     runLoop = False
-    strip.clear()
-    strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
+    strip.reset()
 
     initialize()
 
