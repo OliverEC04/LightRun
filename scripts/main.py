@@ -223,10 +223,6 @@ def resetGame():
     strip.reset()
     strip.draw()
 
-# Variables
-tick = 0
-hitTick = 0
-
 # Temp
 startGame = True
 
@@ -234,6 +230,9 @@ startGame = True
 print("Tryk CTRL + C for at stoppe programmet")
 GPIO.setmode(GPIO.BOARD)
 
+tick = 0
+hitTick = 0
+runLoop = True
 pressLed = BinOut(29)
 btn = BinIn(31)
 pressRight = BinIn(35)
