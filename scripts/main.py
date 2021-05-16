@@ -61,15 +61,7 @@ class Strip:
         self.count = size.x * size.y
         self.led = Adafruit_NeoPixel(self.count, pin, 800000, 10, False, brightness, 0)
 
-        # Create empty track
-        for x in range(self.size.x):
-            self.track.append([])
-
-            for y in range(math.ceil(self.size.y / self.tileHeight)):
-                self.track[x].append(Tile.Empt)
-
-        # self.track[math.floor(self.size.x / 2)][1] = Tile.User
-
+        self.initializeTrack()
         self.led.begin()
 
     def draw(self):
@@ -120,6 +112,18 @@ class Strip:
     def addUser(self, user):
         self.user = user
         self.user.position = math.floor(self.size.x / 2)
+
+    def clear(self):
+        self.initializeTrack()
+
+    def initializeTrack(self):
+        self.track = []
+
+        for x in range(self.size.x):
+            self.track.append([])
+
+            for y in range(math.ceil(self.size.y / self.tileHeight)):
+                self.track[x].append(Tile.Empt)
 
     def posToIndex(self, position):
         return position.x * self.size.y + position.y % self.size.y
@@ -172,6 +176,8 @@ def initialize():
     strip.addUser(User())
 
 def resetGame():
+    runLoop = False
+    strip.clear()
     strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
 
     initialize()
