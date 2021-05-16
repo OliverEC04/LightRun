@@ -101,8 +101,8 @@ class Strip:
         self.count = size.x * size.y
         self.led = Adafruit_NeoPixel(self.count, pin, 800000, 10, False, brightness, 0)
 
-        self.initializeTrack()
         self.led.begin()
+        self.initializeTrack()
 
     def draw(self):
         self.tick += 1
