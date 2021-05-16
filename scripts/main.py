@@ -152,6 +152,7 @@ class Strip:
         # Loop track
         try:
             if (self.tick / (self.moveSpeed / self.tileHeight)) % self.segmentsEnd == 0:
+                self.queueSegment(self.segmentsCombined)
                 print("welcome to the end")
 
         except:
