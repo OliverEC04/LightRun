@@ -99,9 +99,14 @@ class Strip:
 
                 self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
 
-        self.led.setPixelColor(self.posToIndex(Vector2(self.user.position, 3)), Tile.User.value)
+        # Draw user
+        self.led.setPixelColor(self.posToIndex(Vector2(self.user.position, self.tileHeight)), Tile.User.value)
 
         self.led.show()
+
+        # Collision detection
+        if self.track[self.user.position][0] != Tile.Empt:
+            print("collision")
 
     def queueSegment(self, segment):
         for i in range(self.size.x):
