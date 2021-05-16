@@ -240,7 +240,7 @@ while runLoop:
     if startGame:
         strip.draw()
 
-    GPIO.output(BTNLEDPIN, 0)
+    GPIO.output(BTNLEDPIN, 1)
 
     tick += 1
     print("frame tid:", time.time() - startTime)
