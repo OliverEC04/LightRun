@@ -88,6 +88,15 @@ class User:
         if self.strip.track[self.position.x][1] != Tile.Empt:
             self.collide()
 
+    def bindControls(self, rightBtn = 0, leftBtn = 0):
+        if rightBtn != 0:
+            if rightBtn.pressed():
+                self.moveRight()
+
+        if leftBtn != 0:
+            if leftBtn.pressed():
+                self.moveLeft()
+
     def moveRight(self):
         if self.position.x > 0:
             self.position.x -= 1
@@ -253,6 +262,7 @@ segments = [
 ]
 
 strip.queueSegment(segments[0])
+user.bindControls(pressRight, pressLeft)
 
 # Loop
 while runLoop:
