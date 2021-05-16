@@ -78,20 +78,22 @@ class User:
         self.strip = strip
         self.position = Vector2(math.floor(self.strip.size.x / 2), self.strip.tileHeight)
         self.jump = False
+        self.btnControls = True
     
     def update(self):
         # Movement
-        try:
-            if self.rightBtn.pressed():
-                self.moveRight()
-        except:
-            print("User has no right control!")
-        
-        try:
-            if self.leftBtn.pressed():
-                self.moveLeft()
-        except:
-            print("User has no left control!")
+        if self.btnControls:
+            try:
+                if self.rightBtn.pressed():
+                    self.moveRight()
+            except:
+                print("User has no right control!")
+            
+            try:
+                if self.leftBtn.pressed():
+                    self.moveLeft()
+            except:
+                print("User has no left control!")
 
         # Draw to strip
         self.strip.draw(self.position, Tile.User)
@@ -115,6 +117,9 @@ class User:
     def moveLeft(self):
         if self.position.x < self.strip.size.x - 1:
             self.position.x += 1
+
+    def setPosition(self, value):
+        self.position.x = round(value / 100 * self.strip.size.x)
 
     def collide(self):
         resetGame()
