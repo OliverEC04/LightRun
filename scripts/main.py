@@ -80,6 +80,19 @@ class User:
         self.jump = False
     
     def update(self):
+        # Movement
+        try:
+            if self.rightBtn.pressed():
+                self.moveRight()
+        except:
+            print("User has no right control!")
+        
+        try:
+            if self.leftBtn.pressed():
+                self.moveLeft()
+        except:
+            print("User has no left control!")
+
         # Draw to strip
         self.strip.draw(self.position, Tile.User)
         self.strip.led.show()
@@ -90,12 +103,10 @@ class User:
 
     def bindControls(self, rightBtn = 0, leftBtn = 0):
         if rightBtn != 0:
-            if rightBtn.pressed():
-                self.moveRight()
+            self.rightBtn = rightBtn
 
         if leftBtn != 0:
-            if leftBtn.pressed():
-                self.moveLeft()
+            self.leftBtn = leftBtn
 
     def moveRight(self):
         if self.position.x > 0:
