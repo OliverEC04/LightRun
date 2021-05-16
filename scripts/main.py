@@ -266,7 +266,7 @@ while runLoop:
     startTime = time.time()
 
     if startGame:
-        strip.draw()
+        strip.update()
     else:
         startGame = btn.pressed()
         if startGame:
