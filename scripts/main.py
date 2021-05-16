@@ -29,7 +29,7 @@ class Tile(Enum):
     Hole = Color(0, 0, 255)
 
 # Constants
-LOOPSPEED = .1 # How long each loop takes (seconds)
+LOOPSPEED = 1 # How long each loop takes (seconds)
 
 # Declaring variables
 tick = 0
