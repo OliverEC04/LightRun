@@ -99,7 +99,7 @@ class Strip:
 
                 self.led.setPixelColor(stripIndex, self.track[x][math.floor(y / self.tileHeight)].value)
 
-        self.led.setPixelColor(self.posToIndex(Vector2(self.user.position, 3)), Tile.User)
+        self.led.setPixelColor(self.posToIndex(Vector2(self.user.position, 3)), Tile.User.value)
 
         self.led.show()
 
