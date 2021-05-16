@@ -164,7 +164,9 @@ class Strip:
 
             for y in range(math.ceil(self.size.y / self.tileHeight)):
                 self.track[x].append(Tile.Empt)
-                self.led.setPixelColor(self.posToIndex(Vector2(x, y)), Tile.Empt)
+                
+                for i in range(self.tileHeight):
+                    self.led.setPixelColor(self.posToIndex(Vector2(x, y * self.tileHeight + i)), Tile.Empt.value)
 
         self.led.show()
 
