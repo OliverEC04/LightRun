@@ -342,7 +342,7 @@ layout = [
     ]
 ]
 
-window = sg.Window("LightRun", layout).Finalize()
+window = sg.Window("LightRun", layout, no_titlebar=True, location=(0,0), size=(800,600), keep_on_top=True).Finalize()
 window.Maximize()
 
 # strip.queueSegment(segments[0])
