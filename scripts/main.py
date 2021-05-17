@@ -143,6 +143,7 @@ class User:
     def collide(self):
         hitTick = tick
         database.insertScore(self.name, hitTick - startTick)
+        updateScoreboard()
 
         buzz.write(True)
         time.sleep(0.5)
@@ -291,6 +292,14 @@ class Database:
 
         return cur.fetchall()
 
+    def getScores(self):
+        conn = self.createConnection()
+        cur = conn.cursor()
+
+        cur.execute("""SELECT name,score FROM Scoreboard""")
+
+        return cur.fetchall()
+
     def createConnection(self):
         """ create a database connection to the SQLite database
             specified by the db_file
@@ -309,6 +318,12 @@ def resetGame():
 
     strip.reset()
     strip.queueSegment(segments[0])
+
+def updateScoreboard():
+    scores = database.getScores()
+    print(scores)
+
+
 
 # Temp
 startGame = False
@@ -368,6 +383,8 @@ layout = [
 
 window = sg.Window("LightRun", layout, no_titlebar=False, location=(50,50), size=(1800,900), keep_on_top=True).Finalize()
 window.Maximize()
+event, values = window.read()
+updateScoreboard()
 
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
