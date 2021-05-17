@@ -3,7 +3,7 @@ import argparse
 import sqlite3
 import math
 # import I2C_LCD_driver
-import PySimpleGUI
+import psgui as sg
 from enum import Enum
 try:
     import RPi.GPIO as GPIO
