@@ -329,6 +329,8 @@ buzz.write(False)
 while runLoop:
     startTime = time.time()
 
+    event, values = window.read()
+
     if startGame:
         strip.update()
     else:
