@@ -324,7 +324,9 @@ def updateScoreboard():
     scores.sort(key=takeSecond, reverse=True)
     print(scores)
 
-    # window.Element("sb").
+    for i in range(len(scores)):
+        window["sb" + str(i + 1) + "name"].update(scores[i][0])
+        window["sb" + str(i + 1) + "score"].update(scores[i][1])
 
 def takeSecond(elem):
     return elem[1]
