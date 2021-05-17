@@ -341,6 +341,7 @@ segments = [
 inCol = [
     [sg.Text("Du er logget in som")],
     [sg.Text("spiller navn", key="userName")],
+    [sg.Text("Point:")]
     [sg.Text("100 p", key="userPoints")],
     [sg.Button("Log ud")]
 ]
@@ -389,9 +390,8 @@ while runLoop:
         window.Element("outCol").Update(visible=False)
         window.Element("inCol").Update(visible=True)
 
-        print(database.loadScore(values["inputName"]))
         window["userName"].update(values["inputName"])
-        window["userPoints"].update(str(database.loadScore(values["inputName"])))
+        window["userPoints"].update(str(database.loadScore(values["inputName"])) + " p")
 
     if event == "Log ud":
         window.Element("outCol").Update(visible=True)
