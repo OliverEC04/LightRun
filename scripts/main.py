@@ -389,7 +389,7 @@ while runLoop:
         window.Element("outCol").Update(visible=False)
         window.Element("inCol").Update(visible=True)
 
-        print(database.loadScore("Oliver"))
+        print(database.loadScore(values["inputName"]))
         # window["userName"].update(values["inputName"])
         # window["userPoints"].update(str(database.loadScore(values["inputName"])))
 
