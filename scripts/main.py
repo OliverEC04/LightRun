@@ -343,6 +343,7 @@ layout = [
 ]
 
 window = sg.Window("LightRun", layout)
+window.Element("inCol").Update(visible=False)
 
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
@@ -363,6 +364,7 @@ while runLoop:
     if event == "Ok" and values["inputName"] != "":
         print("ja")
         window.Element("outCol").Update(visible=False)
+        window.Element("inCol").Update(visible=True)
 
     if startGame:
         strip.update()
