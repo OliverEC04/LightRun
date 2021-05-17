@@ -390,8 +390,8 @@ while runLoop:
         window.Element("inCol").Update(visible=True)
 
         print(database.loadScore(values["inputName"]))
-        # window["userName"].update(values["inputName"])
-        # window["userPoints"].update(str(database.loadScore(values["inputName"])))
+        window["userName"].update(values["inputName"])
+        window["userPoints"].update(str(database.loadScore(values["inputName"])))
 
     if event == "Log ud":
         window.Element("outCol").Update(visible=True)
