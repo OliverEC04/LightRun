@@ -287,7 +287,7 @@ class Database:
         conn = self.createConnection()
         cur = conn.cursor()
 
-        cur.execute("SELECT Score FROM Scoreboard WHERE name = 'Oliver'")
+        cur.execute("""SELECT Score FROM Scoreboard WHERE name = '{0}'""".format(user))
 
         return cur.fetchall()
 
