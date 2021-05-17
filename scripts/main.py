@@ -318,7 +318,7 @@ buzz2.write(False)
 while runLoop:
     startTime = time.time()
 
-    buzz1.write(True)
+    buzz2.write(True)
 
     if startGame:
         strip.update()
