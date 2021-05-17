@@ -314,28 +314,31 @@ segments = [
         [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
     ]),
 ]
-layoutIn = [
+
+inCol = [
     [sg.Text("Du er logget in som")],
     [sg.Text("spiller navn", key="userName")],
     [sg.Text("100 p", key="userPoints")],
     [sg.Button("Log ud")]
 ]
-layoutOut = [
+
+outCol = [
     [sg.Text("Log ind")],
     [sg.Text("for at gemme dine point")],
     [sg.Input(key="inputName")],
     [sg.Button("Ok")]
 ]
 
+scoreboardCol = [
+    [sg.Text("Top 10")],
+]
+
 layout = [
-    [sg.Text("Du er logget in som")],
-    [sg.Text("spiller navn", key="userName")],
-    [sg.Text("100 p", key="userPoints")],
-    [sg.Button("Log ud")],
-    [sg.Text("Log ind")],
-    [sg.Text("for at gemme dine point")],
-    [sg.Input(key="inputName")],
-    [sg.Button("Ok")]
+    [
+        sg.Column(inCol),
+        sg.VSeperator(),
+        sg.Column(scoreboardCol),
+    ]
 ]
 
 window = sg.Window("LightRun", layout)
