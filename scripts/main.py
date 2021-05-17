@@ -323,7 +323,7 @@ def updateScoreboard():
     scores = database.getScores()
     print(scores)
 
-    window.Element("sb").add_row([[sg.Text("hej")]])
+    window.Element("sb").
 
 
 
@@ -372,7 +372,16 @@ outCol = [
 
 scoreboardCol = [
     [sg.Text("Top 10")],
-    [sg.Column([], key="sb")]
+    [sg.Text("1. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
+    [sg.Text("2. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
+    [sg.Text("3. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
+    [sg.Text("4. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
+    [sg.Text("5. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
+    [sg.Text("6. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
+    [sg.Text("7. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
+    [sg.Text("8. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
+    [sg.Text("9. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
+    [sg.Text("10. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
 ]
 
 layout = [
