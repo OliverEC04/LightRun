@@ -342,7 +342,10 @@ while runLoop:
 
     event, values = window.read()
     if event is None:
+        print("Du har lukket programmet")
         break
+    if event == "Ok":
+        print("hej")
 
     if startGame:
         strip.update()
