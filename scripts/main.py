@@ -336,14 +336,13 @@ scoreboardCol = [
 layout = [
     [
         sg.Column(outCol, key="outCol"),
-        sg.Column(inCol, key="inCol"),
+        sg.Column(inCol, key="inCol", visible=False),
         sg.VSeperator(),
         sg.Column(scoreboardCol),
     ]
 ]
 
 window = sg.Window("LightRun", layout)
-window.Element("inCol").Update(visible=False)
 
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
