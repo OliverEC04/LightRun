@@ -40,6 +40,7 @@ ENABLENAME = False
 # Declaring variables
 tick = 0
 hitTick = 0
+startTick = 0
 runLoop = 0
 startGame = 0
 strip = 0
@@ -83,7 +84,8 @@ class Segment:
         self.arr = segmentArray
 
 class User:
-    def __init__(self, strip):
+    def __init__(self, name, strip):
+        self.name = name
         self.strip = strip
         self.position = Vector2(math.floor(self.strip.size.x / 2), self.strip.tileHeight)
         self.jump = False
@@ -139,6 +141,9 @@ class User:
         self.position.x = round(value / 100 * self.strip.size.x)
 
     def collide(self):
+        hitTick = tick
+        database.insertScore(self.name, hitTick - startTick)
+
         buzz.write(True)
         time.sleep(0.5)
         buzz.write(False)
@@ -277,6 +282,28 @@ class Database:
             if sqliteConnection:
                 sqliteConnection.close()
                 print("The SQLite connection is closed")
+        
+    def loadScore(self, user):
+        conn = self.createConnection()
+        cur = conn.cursor()
+
+        cur.execute("SELECT Score FROM Scoreboard WHERE Name = " + user)
+
+        return cur.fetchall()
+
+    def createConnection(self):
+        """ create a database connection to the SQLite database
+            specified by the db_file
+        :param db_file: database file
+        :return: Connection object or None
+        """
+        conn = None
+        try:
+            conn = sqlite3.connect(self.path)
+        except Error as e:
+            print(e)
+
+        return conn
 
 # Functions
 def resetGame():
@@ -288,7 +315,7 @@ def resetGame():
     strip.queueSegment(segments[0])
 
 # Temp
-startGame = True
+startGame = False
 
 # Initalize
 print("Tryk CTRL + C for at stoppe programmet")
@@ -304,7 +331,7 @@ pressRight = BinIn(35)
 pressLeft = BinIn(33)
 database = Database("../assets/database.db")
 strip = Strip(Vector2(5, 60), 18, 50, 10, 5, True)
-user = User(strip)
+user = User("Player", strip)
 segments = [
     Segment([
         [Tile.Wall, Tile.Wall, Tile.Empt, Tile.Hole],
@@ -361,9 +388,15 @@ while runLoop:
     if event is None:
         print("Du har lukket programmet")
         break
+
     if event == "Ok" and values["inputName"] != "":
         window.Element("outCol").Update(visible=False)
         window.Element("inCol").Update(visible=True)
+
+        print(database.loadScore("Oliver"))
+        # window["userName"].update(values["inputName"])
+        # window["userPoints"].update(str(database.loadScore(values["inputName"])))
+
     if event == "Log ud":
         window.Element("outCol").Update(visible=True)
         window.Element("inCol").Update(visible=False)
@@ -373,7 +406,9 @@ while runLoop:
     else:
         startGame = btn.pressed()
         if startGame:
+            user.name = values["inputName"]
             pressLed.write(False)
+            startTick = tick
         else:
             pressLed.write(tick % 2)
         
