@@ -308,6 +308,8 @@ segments = [
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
 user.bindControls(pressRight, pressLeft)
+buzz1.write(False)
+buzz2.write(False)
 
 # mylcd = I2C_LCD_driver.lcd()
 # mylcd.lcd_display_string("Hello World!", 1)
@@ -317,7 +319,6 @@ while runLoop:
     startTime = time.time()
 
     buzz1.write(True)
-    buzz2.write(True)
 
     if startGame:
         strip.update()
