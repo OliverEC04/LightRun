@@ -287,7 +287,7 @@ class Database:
         conn = self.createConnection()
         cur = conn.cursor()
 
-        cur.execute("SELECT Score FROM Scoreboard WHERE Name = " + user)
+        cur.execute("SELECT Score FROM Scoreboard WHERE name = 'Oliver'")
 
         return cur.fetchall()
 
@@ -297,7 +297,7 @@ class Database:
         :param db_file: database file
         :return: Connection object or None
         """
-        conn = sqlite3.connect("/home/pi/Desktop/LightRun/assets/database.db")
+        conn = sqlite3.connect(self.path)
 
         return conn
 
@@ -325,7 +325,7 @@ buzz = BinOut(38)
 btn = BinIn(31)
 pressRight = BinIn(35)
 pressLeft = BinIn(33)
-database = Database("../assets/database.db")
+database = Database("/home/pi/Desktop/LightRun/assets/database.db")
 strip = Strip(Vector2(5, 60), 18, 50, 10, 5, True)
 user = User("Player", strip)
 segments = [
