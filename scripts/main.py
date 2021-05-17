@@ -362,8 +362,8 @@ while runLoop:
         break
     if event == "Ok" and values["inputName"] != "":
         print("ja")
-        window.Element("outCol").Update(visible=False)
         window.Element("inCol").Update(visible=True)
+        window.Element("outCol").Update(visible=False)
 
     if startGame:
         strip.update()
