@@ -335,10 +335,10 @@ scoreboardCol = [
 
 layout = [
     [
-        sg.Column(outCol, key="outCol", visible=True),
+        sg.Column(outCol, key="outCol"),
         sg.Column(inCol, key="inCol", visible=False),
         sg.VSeperator(),
-        sg.Column(scoreboardCol),
+        sg.Column(scoreboardCol, key="sbCol"),
     ]
 ]
 
@@ -362,8 +362,9 @@ while runLoop:
         break
     if event == "Ok" and values["inputName"] != "":
         print("ja")
-        window.Element("inCol").Update(visible=True)
         window.Element("outCol").Update(visible=False)
+        window.Element("inCol").Update(visible=True)
+        window.Element("sbCol").Update(visible=True)
 
     if startGame:
         strip.update()
