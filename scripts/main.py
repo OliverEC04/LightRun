@@ -372,16 +372,16 @@ outCol = [
 
 scoreboardCol = [
     [sg.Text("Top 10")],
-    [sg.Text("1. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
-    [sg.Text("2. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
-    [sg.Text("3. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
-    [sg.Text("4. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
-    [sg.Text("5. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
-    [sg.Text("6. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
-    [sg.Text("7. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
-    [sg.Text("8. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
-    [sg.Text("9. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
-    [sg.Text("10. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1core")],
+    [sg.Text("1. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1score")],
+    [sg.Text("2. "), sg.Text("sb1name", key="sb2name"), sg.Text("sb1score", key="sb2score")],
+    [sg.Text("3. "), sg.Text("sb1name", key="sb3name"), sg.Text("sb1score", key="sb3score")],
+    [sg.Text("4. "), sg.Text("sb1name", key="sb4name"), sg.Text("sb1score", key="sb4score")],
+    [sg.Text("5. "), sg.Text("sb1name", key="sb5name"), sg.Text("sb1score", key="sb5score")],
+    [sg.Text("6. "), sg.Text("sb1name", key="sb6name"), sg.Text("sb1score", key="sb6score")],
+    [sg.Text("7. "), sg.Text("sb1name", key="sb7name"), sg.Text("sb1score", key="sb7score")],
+    [sg.Text("8. "), sg.Text("sb1name", key="sb8name"), sg.Text("sb1score", key="sb8score")],
+    [sg.Text("9. "), sg.Text("sb1name", key="sb9name"), sg.Text("sb1score", key="sb9score")],
+    [sg.Text("10. "), sg.Text("sb1name", key="sb10name"), sg.Text("sb1score", key="sb10score")],
 ]
 
 layout = [
