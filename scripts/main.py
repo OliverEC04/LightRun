@@ -297,11 +297,7 @@ class Database:
         :param db_file: database file
         :return: Connection object or None
         """
-        conn = None
-        try:
-            conn = sqlite3.connect(self.path)
-        except Error as e:
-            print(e)
+        conn = sqlite3.connect(self.path)
 
         return conn
 
