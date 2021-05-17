@@ -326,7 +326,19 @@ layoutOut = [
     [sg.Input(key="inputName")],
     [sg.Button("Ok")]
 ]
-window = sg.Window("LightRun", layoutOut.extend(layoutIn))
+
+layout = [
+    [sg.Text("Du er logget in som")],
+    [sg.Text("spiller navn", key="userName")],
+    [sg.Text("100 p", key="userPoints")],
+    [sg.Button("Log ud")],
+    [sg.Text("Log ind")],
+    [sg.Text("for at gemme dine point")],
+    [sg.Input(key="inputName")],
+    [sg.Button("Ok")]
+]
+
+window = sg.Window("LightRun", layout)
 
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
