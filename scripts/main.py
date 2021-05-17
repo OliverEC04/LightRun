@@ -325,6 +325,9 @@ def updateScoreboard():
     print(scores)
 
     for i in range(len(scores)):
+        if i > 9:
+            break
+        
         window["sb" + str(i + 1) + "name"].update(scores[i][0])
         window["sb" + str(i + 1) + "score"].update(scores[i][1])
 
