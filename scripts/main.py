@@ -2,7 +2,7 @@
 import argparse
 import sqlite3
 import math
-import I2C_LCD_driver
+# import I2C_LCD_driver
 import RPi.GPIO as GPIO
 from enum import Enum
 from rpi_ws281x import *
@@ -307,8 +307,8 @@ segments = [
 strip.loopSegments(segments)
 user.bindControls(pressRight, pressLeft)
 
-mylcd = I2C_LCD_driver.lcd()
-mylcd.lcd_display_string("Hello World!", 1)
+# mylcd = I2C_LCD_driver.lcd()
+# mylcd.lcd_display_string("Hello World!", 1)
 
 # Loop
 while runLoop:
