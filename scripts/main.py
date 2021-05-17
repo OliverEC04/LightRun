@@ -345,7 +345,7 @@ while runLoop:
         print("Du har lukket programmet")
         break
     if event == "Ok" and values["inputName"] != "":
-        print(values["inputName"])
+        window.layout(layoutIn)
 
     if startGame:
         strip.update()
