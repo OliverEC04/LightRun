@@ -341,7 +341,7 @@ segments = [
 inCol = [
     [sg.Text("Du er logget in som")],
     [sg.Text("spiller navn", key="userName")],
-    [sg.Text("Point:")]
+    [sg.Text("Point:")],
     [sg.Text("100 p", key="userPoints")],
     [sg.Button("Log ud")]
 ]
