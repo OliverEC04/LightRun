@@ -133,7 +133,7 @@ class User:
 
     def collide(self):
         buzz.write(True)
-        time.sleep(1)
+        time.sleep(0.5)
         buzz.write(False)
 
         resetGame()
