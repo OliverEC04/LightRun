@@ -46,6 +46,8 @@ strip = 0
 database = 0
 segments = 0
 window = 0
+layoutIn = 0
+layoutOut = 0
 pressLed = 0
 buzz = 0
 btn = 0
@@ -312,10 +314,19 @@ segments = [
         [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
     ]),
 ]
-window = sg.Window("LightRun", [
-    [sg.Text("Indtast navn: ")],
+layoutIn = [
+    [sg.Text("Du er logget in som")],
+    [sg.Text("spiller navn", key="userName")],
+    [sg.Text("100 p", key="userPoints")],
+    [sg.Button("Log ud")]
+]
+layoutOut = [
+    [sg.Text("Log ind")],
+    [sg.Text("for at gemme dine point")],
+    [sg.Input(key="inputName")],
     [sg.Button("Ok")]
-])
+]
+window = sg.Window("LightRun", layoutOut)
 
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
@@ -330,6 +341,8 @@ while runLoop:
     startTime = time.time()
 
     event, values = window.read()
+    if event is None:
+        break
 
     if startGame:
         strip.update()
