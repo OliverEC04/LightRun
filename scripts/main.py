@@ -297,7 +297,7 @@ class Database:
         :param db_file: database file
         :return: Connection object or None
         """
-        conn = sqlite3.connect(self.path)
+        conn = sqlite3.connect("/home/pi/Desktop/LightRun/assets/database.db")
 
         return conn
 
