@@ -335,10 +335,10 @@ scoreboardCol = [
 
 layout = [
     [
-        sg.Column(outCol, key="outCol"),
-        sg.Column(inCol, key="inCol", visible=False),
-        sg.VSeperator(key="V"),
-        sg.Column(scoreboardCol, key="sbCol"),
+        sg.Column(outCol, key="outCol", justification="left"),
+        sg.Column(inCol, key="inCol", visible=False, justification="left"),
+        sg.VSeperator(),
+        sg.Column(scoreboardCol, key="sbCol", justification="right"),
     ]
 ]
 
@@ -364,8 +364,6 @@ while runLoop:
         print("ja")
         window.Element("outCol").Update(visible=False)
         window.Element("inCol").Update(visible=True)
-        window.Element("V").Update(visible=False)
-        window.Element("V").Update(visible=True)
         window.Element("sbCol").Update(visible=False)
         window.Element("sbCol").Update(visible=True)
 
