@@ -323,7 +323,7 @@ def updateScoreboard():
     scores = database.getScores()
     print(scores)
 
-    window.Element("sb").add_row([sg.Text("hej")])
+    window.Element("sb").add_row([[sg.Text("hej")]])
 
 
 
