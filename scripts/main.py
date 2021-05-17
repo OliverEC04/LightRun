@@ -335,7 +335,7 @@ scoreboardCol = [
 
 layout = [
     [
-        sg.Column(outCol, key="outCol"),
+        sg.Column(outCol, key="outCol", visible=True),
         sg.Column(inCol, key="inCol", visible=False),
         sg.VSeperator(),
         sg.Column(scoreboardCol),
