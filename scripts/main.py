@@ -360,6 +360,7 @@ while runLoop:
         print("Du har lukket programmet")
         break
     if event == "Ok" and values["inputName"] != "":
+        print("ja")
         window["leftCol"].update(outCol)
 
     if startGame:
