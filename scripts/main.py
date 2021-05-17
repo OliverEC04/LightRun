@@ -287,6 +287,8 @@ tick = 0
 hitTick = 0
 runLoop = True
 pressLed = BinOut(29)
+buzz1 = BinOut(38)
+buzz2 = BinOut(40)
 btn = BinIn(31)
 pressRight = BinIn(35)
 pressLeft = BinIn(33)
@@ -313,6 +315,9 @@ user.bindControls(pressRight, pressLeft)
 # Loop
 while runLoop:
     startTime = time.time()
+
+    buzz1.write(True)
+    buzz2.write(True)
 
     if startGame:
         strip.update()
