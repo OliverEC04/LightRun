@@ -335,10 +335,10 @@ scoreboardCol = [
 
 layout = [
     [
-        sg.Column(outCol, key="outCol", justification="left"),
-        sg.Column(inCol, key="inCol", visible=False, justification="left"),
+        sg.Column(scoreboardCol, key="sbCol", justification="left"),
         sg.VSeperator(),
-        sg.Column(scoreboardCol, key="sbCol", justification="right"),
+        sg.Column(outCol, key="outCol", justification="right"),
+        sg.Column(inCol, key="inCol", visible=False, justification="right"),
     ]
 ]
 
@@ -361,11 +361,11 @@ while runLoop:
         print("Du har lukket programmet")
         break
     if event == "Ok" and values["inputName"] != "":
-        print("ja")
         window.Element("outCol").Update(visible=False)
         window.Element("inCol").Update(visible=True)
-        window.Element("sbCol").Update(visible=False)
-        window.Element("sbCol").Update(visible=True)
+    if event == "Log ud":
+        window.Element("outCol").Update(visible=True)
+        window.Element("inCol").Update(visible=False)
 
     if startGame:
         strip.update()
