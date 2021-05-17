@@ -2,6 +2,7 @@
 import argparse
 import sqlite3
 import math
+import I2C_LCD_driver
 import RPi.GPIO as GPIO
 from enum import Enum
 from rpi_ws281x import *
@@ -13,7 +14,7 @@ TODO:
    * Fodplader
    * Knapper ✔
    * Dø ✔
-   * Hop
+   * Hop (nej)
  * Pointgivning og scoreboard
    * Optæl point når man spiller
    * Skriv pointene til database
@@ -23,10 +24,10 @@ TODO:
 
 # Enums
 class Tile(Enum):
-    Empt = Color(5, 5, 5)
+    Empt = Color(0, 0, 0)
     User = Color(0, 255, 0)
     Wall = Color(200, 0, 0)
-    Hole = Color(0, 0, 180)
+    Hole = Color(200, 0, 0)
 
 # Constants
 LOOPSPEED = .1 # How long each loop takes (seconds)
@@ -305,6 +306,9 @@ segments = [
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
 user.bindControls(pressRight, pressLeft)
+
+mylcd = I2C_LCD_driver.lcd()
+mylcd.lcd_display_string("Hello World!", 1)
 
 # Loop
 while runLoop:
