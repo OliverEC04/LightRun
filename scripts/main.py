@@ -335,7 +335,8 @@ scoreboardCol = [
 
 layout = [
     [
-        sg.Column(outCol, key="leftCol"),
+        sg.Column(outCol, key="outCol"),
+        sg.Column(inCol, key="inCol"),
         sg.VSeperator(),
         sg.Column(scoreboardCol),
     ]
@@ -361,7 +362,7 @@ while runLoop:
         break
     if event == "Ok" and values["inputName"] != "":
         print("ja")
-        window["leftCol"].update(inCol)
+        window.Element("outCol").Update(visible=False)
 
     if startGame:
         strip.update()
