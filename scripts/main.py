@@ -327,7 +327,7 @@ def updateScoreboard():
     for i in range(len(scores)):
         if i > 9:
             break
-        
+
         window["sb" + str(i + 1) + "name"].update(scores[i][0])
         window["sb" + str(i + 1) + "score"].update(scores[i][1])
 
@@ -381,15 +381,15 @@ outCol = [
 scoreboardCol = [
     [sg.Text("Top 10")],
     [sg.Text("1. "), sg.Text("sb1name", key="sb1name"), sg.Text("sb1score", key="sb1score")],
-    [sg.Text("2. "), sg.Text("sb1name", key="sb2name"), sg.Text("sb1score", key="sb2score")],
-    [sg.Text("3. "), sg.Text("sb1name", key="sb3name"), sg.Text("sb1score", key="sb3score")],
-    [sg.Text("4. "), sg.Text("sb1name", key="sb4name"), sg.Text("sb1score", key="sb4score")],
-    [sg.Text("5. "), sg.Text("sb1name", key="sb5name"), sg.Text("sb1score", key="sb5score")],
-    [sg.Text("6. "), sg.Text("sb1name", key="sb6name"), sg.Text("sb1score", key="sb6score")],
-    [sg.Text("7. "), sg.Text("sb1name", key="sb7name"), sg.Text("sb1score", key="sb7score")],
-    [sg.Text("8. "), sg.Text("sb1name", key="sb8name"), sg.Text("sb1score", key="sb8score")],
-    [sg.Text("9. "), sg.Text("sb1name", key="sb9name"), sg.Text("sb1score", key="sb9score")],
-    [sg.Text("10. "), sg.Text("sb1name", key="sb10name"), sg.Text("sb1score", key="sb10score")],
+    [sg.Text("2. "), sg.Text("sb2name", key="sb2name"), sg.Text("sb2score", key="sb2score")],
+    [sg.Text("3. "), sg.Text("sb3name", key="sb3name"), sg.Text("sb3score", key="sb3score")],
+    [sg.Text("4. "), sg.Text("sb4name", key="sb4name"), sg.Text("sb4score", key="sb4score")],
+    [sg.Text("5. "), sg.Text("sb5name", key="sb5name"), sg.Text("sb5score", key="sb5score")],
+    [sg.Text("6. "), sg.Text("sb6name", key="sb6name"), sg.Text("sb6score", key="sb6score")],
+    [sg.Text("7. "), sg.Text("sb7name", key="sb7name"), sg.Text("sb7score", key="sb7score")],
+    [sg.Text("8. "), sg.Text("sb8name", key="sb8name"), sg.Text("sb8score", key="sb8score")],
+    [sg.Text("9. "), sg.Text("sb9name", key="sb9name"), sg.Text("sb9score", key="sb9score")],
+    [sg.Text("10. "), sg.Text("sb10name", key="sb10name"), sg.Text("sb10score", key="sb10score")],
 ]
 
 layout = [
