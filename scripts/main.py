@@ -3,9 +3,13 @@ import argparse
 import sqlite3
 import math
 # import I2C_LCD_driver
-import RPi.GPIO as GPIO
+import PySimpleGUI as sg
 from enum import Enum
-from rpi_ws281x import *
+try:
+    import RPi.GPIO as GPIO
+    from rpi_ws281x import *
+except:
+    CROSSPLATFORM = True
 
 """
 TODO:
@@ -41,6 +45,7 @@ startGame = 0
 strip = 0
 database = 0
 segments = 0
+window = 0
 pressLed = 0
 buzz = 0
 btn = 0
@@ -307,6 +312,10 @@ segments = [
         [Tile.Wall, Tile.Empt, Tile.Empt, Tile.Wall]
     ]),
 ]
+window = sg.Window("LightRun", [
+    [sg.Text("Indtast navn: ")],
+    [sg.Button("Ok")]
+])
 
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
@@ -335,10 +344,10 @@ while runLoop:
     user.update()
 
     tick += 1
-    print("frame tid:", time.time() - startTime)
+    # print("frame tid:", time.time() - startTime)
     time.sleep(max(LOOPSPEED - (time.time() - startTime), 0))
 
-
+window.close()
 
 
 
