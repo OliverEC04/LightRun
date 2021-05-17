@@ -133,9 +133,9 @@ class User:
 
     def collide(self):
         buzz.write(True)
-        time.sleep(0.1)
+        time.sleep(1)
         buzz.write(False)
-        
+
         resetGame()
 
 class Strip:
