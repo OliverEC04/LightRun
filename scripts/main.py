@@ -344,7 +344,7 @@ while runLoop:
     if event is None:
         print("Du har lukket programmet")
         break
-    if event == "Ok":
+    if event == "Ok" and values["inputName"] != "":
         print(values["inputName"])
 
     if startGame:
