@@ -323,6 +323,8 @@ def updateScoreboard():
     scores = database.getScores()
     print(scores)
 
+    window.Element("sb").add_row([sg.Text("hej")])
+
 
 
 # Temp
@@ -370,6 +372,7 @@ outCol = [
 
 scoreboardCol = [
     [sg.Text("Top 10")],
+    [sg.Column([], key="sb")]
 ]
 
 layout = [
