@@ -321,7 +321,7 @@ def resetGame():
 
 def updateScoreboard():
     scores = database.getScores()
-    print(scores)
+    print(scores[0])
 
     # window.Element("sb").
 
