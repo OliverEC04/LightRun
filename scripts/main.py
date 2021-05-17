@@ -132,6 +132,10 @@ class User:
         self.position.x = round(value / 100 * self.strip.size.x)
 
     def collide(self):
+        buzz.write(True)
+        time.sleep(0.1)
+        buzz.write(False)
+        
         resetGame()
 
 class Strip:
@@ -287,8 +291,7 @@ tick = 0
 hitTick = 0
 runLoop = True
 pressLed = BinOut(29)
-buzz1 = BinOut(38)
-buzz2 = BinOut(40)
+buzz = BinOut(38)
 btn = BinIn(31)
 pressRight = BinIn(35)
 pressLeft = BinIn(33)
@@ -308,8 +311,7 @@ segments = [
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
 user.bindControls(pressRight, pressLeft)
-buzz1.write(False)
-buzz2.write(False)
+buzz.write(False)
 
 # mylcd = I2C_LCD_driver.lcd()
 # mylcd.lcd_display_string("Hello World!", 1)
@@ -317,8 +319,6 @@ buzz2.write(False)
 # Loop
 while runLoop:
     startTime = time.time()
-
-    buzz2.write(True)
 
     if startGame:
         strip.update()
