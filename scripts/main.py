@@ -326,7 +326,7 @@ layoutOut = [
     [sg.Input(key="inputName")],
     [sg.Button("Ok")]
 ]
-window = sg.Window("LightRun", layoutOut)
+window = sg.Window("LightRun", layoutOut.extend(layoutIn))
 
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
