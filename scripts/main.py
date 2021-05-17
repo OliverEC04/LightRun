@@ -335,7 +335,7 @@ scoreboardCol = [
 
 layout = [
     [
-        sg.Column(inCol),
+        sg.Column(inCol, key="leftCol"),
         sg.VSeperator(),
         sg.Column(scoreboardCol),
     ]
@@ -360,7 +360,7 @@ while runLoop:
         print("Du har lukket programmet")
         break
     if event == "Ok" and values["inputName"] != "":
-        window.layout(layoutIn)
+        window["leftCol"].update(outCol)
 
     if startGame:
         strip.update()
