@@ -193,7 +193,7 @@ class Strip:
 
                 # Temp
                 trackOffset = self.tick % self.tileHeight
-                trackOffset = 0
+                # trackOffset = 0
 
                 self.draw(Vector2(x, y - trackOffset), self.track[x][math.floor(y / self.tileHeight)])
 
