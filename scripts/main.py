@@ -436,7 +436,7 @@ while runLoop:
     #     window.Element("inCol").Update(visible=False)
 
     hx = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
-    hxVal = hs._read()
+    hxVal = hx._read()
     print(hxVal)  # get raw data reading from hx711
     posVal = hxVal * (-1) / 875000
     print(posVal)
