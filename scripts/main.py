@@ -451,7 +451,7 @@ while runLoop:
     print("right", posRightVal)
 
     print("pos", 0.5 - posLeftVal + posRightVal)
-    user.setPosition(0.5 - posLeftVal + posRightVal)
+    user.setPosition((0.5 - posLeftVal + posRightVal) * 100)
     # GPIO.cleanup()
 
     if startGame:
