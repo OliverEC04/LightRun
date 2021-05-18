@@ -447,7 +447,7 @@ while runLoop:
     hxRight = HX711(dout_pin=15, pd_sck_pin=13)  # create an object
     hxRightVal = hxRight._read()
     print(hxRightVal)  # get raw data reading from hx711
-    posRightVal = hxRightVal * (-1) / 8750000 / 2
+    posRightVal = hxRightVal * (-1) / 87500000 / 2
     print("right", posRightVal)
 
     print("pos", 0.5 - posLeftVal + posRightVal)
