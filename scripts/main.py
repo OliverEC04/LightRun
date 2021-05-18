@@ -178,7 +178,7 @@ class Strip:
             print("No segment loop")
 
         # Move track down
-        if self.tick % self.tileHeight == 0:
+        if self.tick % self.tileHeight == 0 and self.tick % self.moveSpeed == 0:
             for x in range(len(self.track)):
                 for y in range(len(self.track[x]) - 1):
                     self.track[x][y] = self.track[x][y + 1]
@@ -352,7 +352,7 @@ btn = BinIn(31)
 pressRight = BinIn(35)
 pressLeft = BinIn(33)
 database = Database("/home/pi/Desktop/LightRun/assets/database.db")
-strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
+strip = Strip(Vector2(5, 60), 18, 50, 2, 5, True)
 user = User("Player", strip)
 segments = [
     Segment([
