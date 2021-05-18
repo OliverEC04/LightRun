@@ -436,6 +436,7 @@ while runLoop:
 
     if startGame:
         strip.update()
+        print("strip")
     else:
         startGame = btn.pressed()
         if startGame:
