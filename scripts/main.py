@@ -143,7 +143,7 @@ class User:
 
     def setPosition(self, value):
         if value > 100:
-            self.position.x = self.size.x - 1
+            self.position.x = self.strip.size.x - 1
         else:
             self.position.x = round(value / 100 * self.strip.size.x)
 
