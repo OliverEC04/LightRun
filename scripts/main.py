@@ -439,13 +439,13 @@ while runLoop:
     GPIO.setmode(GPIO.BOARD)
 
     hxLeft = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
-    hxLeftVal = hx._read()
+    hxLeftVal = hxLeft._read()
     print(hxLeftVal)  # get raw data reading from hx711
     posLeftVal = hxLeftVal * (-1) / 875000 / 2
     print(posLeftVal)
 
     hxRight = HX711(dout_pin=15, pd_sck_pin=13)  # create an object
-    hxRightVal = hx._read()
+    hxRightVal = hxRight._read()
     print(hxRightVal)  # get raw data reading from hx711
     posRightVal = hxRightVal * (-1) / 875000 / 2
     print(posRightVal)
