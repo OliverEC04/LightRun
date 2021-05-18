@@ -442,13 +442,13 @@ while runLoop:
     hxLeftVal = hxLeft._read()
     print(hxLeftVal)  # get raw data reading from hx711
     posLeftVal = hxLeftVal * (-1) / 875000 / 2
-    print(posLeftVal)
+    print("left", posLeftVal)
 
     hxRight = HX711(dout_pin=15, pd_sck_pin=13)  # create an object
     hxRightVal = hxRight._read()
     print(hxRightVal)  # get raw data reading from hx711
     posRightVal = hxRightVal * (-1) / 875000 / 2
-    print(posRightVal)
+    print("right", posRightVal)
 
     print("pos", 0.5 - posLeftVal + posRightVal)
     user.setPosition(0.5 - posLeftVal + posRightVal)
