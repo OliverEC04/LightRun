@@ -458,7 +458,12 @@ while runLoop:
 
     pos = 50
     print("pos", pos)
-    user.setPosition(pos)
+    # user.setPosition(pos)
+
+    if hxRightVal < hxLeftVal:
+        user.moveLeft()
+    else:
+        user.moveRight()
     # GPIO.cleanup()
 
     if startGame:
