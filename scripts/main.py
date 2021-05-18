@@ -178,7 +178,7 @@ class Strip:
             print("No segment loop")
 
         # Move track down
-        if self.tick % self.tileHeight == 0 and self.tick % self.moveSpeed == 0:
+        if self.tick % self.tileHeight == 0:
             for x in range(len(self.track)):
                 for y in range(len(self.track[x]) - 1):
                     self.track[x][y] = self.track[x][y + 1]
