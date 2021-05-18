@@ -186,10 +186,13 @@ class Strip:
         # Draw track to strips
         for x in range(self.size.x):
             for y in range(self.size.y):
-                if y < self.tileHeight:
-                    trackOffset = 0
-                else:
-                    trackOffset = math.floor(self.tick / (self.moveSpeed / self.tileHeight)) % self.tileHeight
+                # if y < self.tileHeight:
+                #     trackOffset = 0
+                # else:
+                #     trackOffset = math.floor(self.tick / (self.moveSpeed / self.tileHeight)) % self.tileHeight
+
+                # Temp
+                trackOffset = self.tick % self.tileHeight
 
                 self.draw(Vector2(x, y - trackOffset), self.track[x][math.floor(y / self.tileHeight)])
 
@@ -352,7 +355,7 @@ btn = BinIn(31)
 pressRight = BinIn(35)
 pressLeft = BinIn(33)
 database = Database("/home/pi/Desktop/LightRun/assets/database.db")
-strip = Strip(Vector2(5, 60), 18, 50, 2, 5, True)
+strip = Strip(Vector2(5, 60), 18, 50, 1, 5, True)
 user = User("Player", strip)
 segments = [
     Segment([
