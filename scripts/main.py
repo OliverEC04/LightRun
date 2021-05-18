@@ -124,7 +124,7 @@ class User:
             if self.strip.track[self.position.x][1] != Tile.Empt:
                 self.collide()
         except:
-            print("list error")
+            print("user pos", self.position.x)
 
     def bindControls(self, rightBtn = 0, leftBtn = 0):
         if rightBtn != 0:
