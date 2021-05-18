@@ -402,10 +402,10 @@ layout = [
     ]
 ]
 
-window = sg.Window("LightRun", layout, no_titlebar=False, location=(50,50), size=(1800,900), keep_on_top=True).Finalize()
-# window.Maximize()
-event, values = window.read()
-updateScoreboard()
+# window = sg.Window("LightRun", layout, no_titlebar=False, location=(50,50), size=(1800,900), keep_on_top=True).Finalize()
+# # window.Maximize()
+# event, values = window.read()
+# updateScoreboard()
 
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
@@ -417,22 +417,21 @@ GPIO.setmode(GPIO.BOARD)
 while runLoop:
     startTime = time.time()
 
-    while True:
-        event, values = window.read()
-        if event is None:
-            print("Du har lukket programmet")
-            break
+    # event, values = window.read()
+    # if event is None:
+    #     print("Du har lukket programmet")
+    #     break
 
-        if event == "Ok" and values["inputName"] != "":
-            window.Element("outCol").Update(visible=False)
-            window.Element("inCol").Update(visible=True)
+    # if event == "Ok" and values["inputName"] != "":
+    #     window.Element("outCol").Update(visible=False)
+    #     window.Element("inCol").Update(visible=True)
 
-            window["userName"].update(values["inputName"])
-            window["userPoints"].update(str(database.loadScore(values["inputName"])) + " p")
+    #     window["userName"].update(values["inputName"])
+    #     window["userPoints"].update(str(database.loadScore(values["inputName"])) + " p")
 
-        if event == "Log ud":
-            window.Element("outCol").Update(visible=True)
-            window.Element("inCol").Update(visible=False)
+    # if event == "Log ud":
+    #     window.Element("outCol").Update(visible=True)
+    #     window.Element("inCol").Update(visible=False)
 
     hx = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
     hxVal = hx._read()
