@@ -440,14 +440,14 @@ while runLoop:
     else:
         startGame = btn.pressed()
         if startGame:
-            user.name = values["inputName"]
+            # user.name = values["inputName"]
             pressLed.write(False)
             startTick = tick
         else:
             pressLed.write(tick % 2)
         
         if ENABLENAME:
-            print(input("Enter name: "))
+            pass
     
     user.update()
 
