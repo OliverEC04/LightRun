@@ -417,22 +417,6 @@ GPIO.setmode(GPIO.BOARD)
 while runLoop:
     startTime = time.time()
 
-    event, values = window.read()
-    if event is None:
-        print("Du har lukket programmet")
-        break
-
-    if event == "Ok" and values["inputName"] != "":
-        window.Element("outCol").Update(visible=False)
-        window.Element("inCol").Update(visible=True)
-
-        window["userName"].update(values["inputName"])
-        window["userPoints"].update(str(database.loadScore(values["inputName"])) + " p")
-
-    if event == "Log ud":
-        window.Element("outCol").Update(visible=True)
-        window.Element("inCol").Update(visible=False)
-
     hx = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
     hxVal = hx._read()
     print(hxVal)  # get raw data reading from hx711
@@ -460,6 +444,23 @@ while runLoop:
 
     tick += 1
     # print("frame tid:", time.time() - startTime)
+
+    event, values = window.read()
+    if event is None:
+        print("Du har lukket programmet")
+        break
+
+    if event == "Ok" and values["inputName"] != "":
+        window.Element("outCol").Update(visible=False)
+        window.Element("inCol").Update(visible=True)
+
+        window["userName"].update(values["inputName"])
+        window["userPoints"].update(str(database.loadScore(values["inputName"])) + " p")
+
+    if event == "Log ud":
+        window.Element("outCol").Update(visible=True)
+        window.Element("inCol").Update(visible=False)
+
     time.sleep(max(LOOPSPEED - (time.time() - startTime), 0))
 
 window.close()
