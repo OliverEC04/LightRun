@@ -142,7 +142,7 @@ class User:
 
     def collide(self):
         hitTick = tick
-        database.insertScore(self.name, hitTick - startTick)
+        # database.insertScore(self.name, hitTick - startTick)
         # updateScoreboard()
 
         buzz.write(True)
