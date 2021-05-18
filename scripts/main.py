@@ -409,7 +409,7 @@ layout = [
 
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
-user.bindControls(pressRight, pressLeft)
+# user.bindControls(pressRight, pressLeft)
 buzz.write(False)
 
 # Loop
@@ -438,7 +438,7 @@ while runLoop:
     print(hxVal)  # get raw data reading from hx711
     posVal = hxVal * (-1) / 875000
     print(posVal)
-    # user.setPosition()
+    user.setPosition(posVal)
     GPIO.cleanup()
 
     if startGame:
