@@ -401,9 +401,9 @@ layout = [
     ]
 ]
 
-window = sg.Window("LightRun", layout, no_titlebar=False, location=(50,50), size=(1800,900), keep_on_top=True).Finalize()
-# window.Maximize()
-event, values = window.read()
+# window = sg.Window("LightRun", layout, no_titlebar=False, location=(50,50), size=(1800,900), keep_on_top=True).Finalize()
+# # window.Maximize()
+# event, values = window.read()
 updateScoreboard()
 
 # strip.queueSegment(segments[0])
