@@ -435,8 +435,7 @@ while runLoop:
     #     window.Element("outCol").Update(visible=True)
     #     window.Element("inCol").Update(visible=False)
 
-    GPIO.setmode(GPIO.BCM)  # set GPIO pin mode to BCM numbering
-    hx = HX711(dout_pin=23, pd_sck_pin=24)  # create an object
+    hx = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
     hxVal = hs._read()
     print(hxVal)  # get raw data reading from hx711
     posVal = hxVal * (-1) / 875000
