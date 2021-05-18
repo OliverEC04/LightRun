@@ -418,21 +418,21 @@ buzz.write(False)
 while runLoop:
     startTime = time.time()
 
-    event, values = window.read()
-    if event is None:
-        print("Du har lukket programmet")
-        break
+    # event, values = window.read()
+    # if event is None:
+    #     print("Du har lukket programmet")
+    #     break
 
-    if event == "Ok" and values["inputName"] != "":
-        window.Element("outCol").Update(visible=False)
-        window.Element("inCol").Update(visible=True)
+    # if event == "Ok" and values["inputName"] != "":
+    #     window.Element("outCol").Update(visible=False)
+    #     window.Element("inCol").Update(visible=True)
 
-        window["userName"].update(values["inputName"])
-        window["userPoints"].update(str(database.loadScore(values["inputName"])) + " p")
+    #     window["userName"].update(values["inputName"])
+    #     window["userPoints"].update(str(database.loadScore(values["inputName"])) + " p")
 
-    if event == "Log ud":
-        window.Element("outCol").Update(visible=True)
-        window.Element("inCol").Update(visible=False)
+    # if event == "Log ud":
+    #     window.Element("outCol").Update(visible=True)
+    #     window.Element("inCol").Update(visible=False)
 
     if startGame:
         strip.update()
