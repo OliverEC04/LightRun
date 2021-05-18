@@ -411,6 +411,7 @@ layout = [
 strip.loopSegments(segments)
 user.bindControls(pressRight, pressLeft)
 buzz.write(False)
+GPIO.setmode(GPIO.BOARD)
 
 # mylcd = I2C_LCD_driver.lcd()
 # mylcd.lcd_display_string("Hello World!", 1)
