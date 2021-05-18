@@ -437,12 +437,20 @@ while runLoop:
     #     window.Element("inCol").Update(visible=False)
 
     GPIO.setmode(GPIO.BOARD)
-    hx = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
-    hxVal = hx._read()
-    print(hxVal)  # get raw data reading from hx711
-    posVal = hxVal * (-1) / 875000
-    print(posVal)
-    user.setPosition(posVal)
+
+    hxLeft = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
+    hxLeftVal = hx._read()
+    print(hxLeftVal)  # get raw data reading from hx711
+    posLeftVal = hxLeftVal * (-1) / 875000 / 2
+    print(posLeftVal)
+
+    hxRight = HX711(dout_pin=15, pd_sck_pin=13)  # create an object
+    hxRightVal = hx._read()
+    print(hxRightVal)  # get raw data reading from hx711
+    posRightVal = hxRightVal * (-1) / 875000 / 2
+    print(posRightVal)
+
+    user.setPosition(0.5 - posLeftVal + posRightVal)
     # GPIO.cleanup()
 
     if startGame:
