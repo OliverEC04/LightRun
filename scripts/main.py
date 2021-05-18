@@ -359,6 +359,8 @@ runLoop = True
 pressLed = BinOut(29)
 buzz = BinOut(38)
 btn = BinIn(31)
+rightBtn = BinIn(16)
+leftBtn = BinIn(18)
 pressRight = BinIn(35)
 pressLeft = BinIn(33)
 database = Database("/home/pi/Desktop/LightRun/assets/database.db")
@@ -444,27 +446,24 @@ while runLoop:
 
     GPIO.setmode(GPIO.BOARD)
 
-    hxLeft = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
-    hxLeftVal = hxLeft._read()
-    print("left raw", hxLeftVal)  # get raw data reading from hx711
-    posLeftVal = hxLeftVal * (-1) / 875000 / 2
-    print("left", posLeftVal)
+    # hxLeft = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
+    # hxLeftVal = hxLeft._read()
+    # print("left raw", hxLeftVal)  # get raw data reading from hx711
+    # posLeftVal = hxLeftVal * (-1) / 875000 / 2
+    # print("left", posLeftVal)
 
-    hxRight = HX711(dout_pin=15, pd_sck_pin=13)  # create an object
-    hxRightVal = hxRight._read()
-    print("rigt raw", hxRightVal)  # get raw data reading from hx711
-    posRightVal = hxRightVal * (-1) / 1 / 2
-    print("right", posRightVal)
+    # hxRight = HX711(dout_pin=15, pd_sck_pin=13)  # create an object
+    # hxRightVal = hxRight._read()
+    # print("rigt raw", hxRightVal)  # get raw data reading from hx711
+    # posRightVal = hxRightVal * (-1) / 1 / 2
+    # print("right", posRightVal)
 
-    pos = 50
-    print("pos", pos)
+    # pos = 50
+    # print("pos", pos)
     # user.setPosition(pos)
 
-    if hxRightVal < hxLeftVal:
-        user.moveLeft()
-    else:
-        user.moveRight()
-    # GPIO.cleanup()
+    print("right", rightBtn.pressed())
+    print("left", leftBtn.pressed())
 
     if startGame:
         strip.update()
