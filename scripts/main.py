@@ -462,8 +462,8 @@ while runLoop:
     # print("pos", pos)
     # user.setPosition(pos)
 
-    print("right", rightBtn.pressed())
-    print("left", leftBtn.pressed())
+    # print("right", rightBtn.pressed())
+    # print("left", leftBtn.pressed())
 
     if startGame:
         strip.update()
