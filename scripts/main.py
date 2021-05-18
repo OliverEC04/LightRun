@@ -421,7 +421,7 @@ layout = [
 
 # strip.queueSegment(segments[0])
 strip.loopSegments(segments)
-# user.bindControls(pressRight, pressLeft)
+user.bindControls(rightBtn, leftBtn)
 buzz.write(False)
 
 # Loop
