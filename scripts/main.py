@@ -120,8 +120,11 @@ class User:
         self.strip.led.show()
 
         # Collision detection
-        if self.strip.track[self.position.x][1] != Tile.Empt:
-            self.collide()
+        try:
+            if self.strip.track[self.position.x][1] != Tile.Empt:
+                self.collide()
+        except:
+            print("list error")
 
     def bindControls(self, rightBtn = 0, leftBtn = 0):
         if rightBtn != 0:
