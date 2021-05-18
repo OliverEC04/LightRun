@@ -456,7 +456,7 @@ while runLoop:
     posRightVal = hxRightVal * (-1) / 1 / 2
     print("right", posRightVal)
 
-    pos = 0.5
+    pos = 50
     print("pos", pos)
     user.setPosition(pos)
     # GPIO.cleanup()
