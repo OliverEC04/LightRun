@@ -336,7 +336,7 @@ def takeSecond(elem):
 
 
 # Temp
-startGame = False
+startGame = True
 
 # Initalize
 print("Tryk CTRL + C for at stoppe programmet")
