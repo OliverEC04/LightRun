@@ -443,7 +443,7 @@ while runLoop:
     posVal = hxVal * (-1) / 875000
     print(posVal)
     user.setPosition(posVal)
-    GPIO.cleanup()
+    # GPIO.cleanup()
 
     if startGame:
         strip.update()
