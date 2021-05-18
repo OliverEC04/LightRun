@@ -142,7 +142,10 @@ class User:
             self.position.x += 1
 
     def setPosition(self, value):
-        self.position.x = round(value / 100 * self.strip.size.x)
+        if value > 100:
+            self.position.x = self.size.x - 1
+        else:
+            self.position.x = round(value / 100 * self.strip.size.x)
 
     def collide(self):
         hitTick = tick
