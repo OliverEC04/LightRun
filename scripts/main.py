@@ -446,18 +446,19 @@ while runLoop:
 
     hxLeft = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
     hxLeftVal = hxLeft._read()
-    print(hxLeftVal)  # get raw data reading from hx711
+    print("left raw", hxLeftVal)  # get raw data reading from hx711
     posLeftVal = hxLeftVal * (-1) / 875000 / 2
     print("left", posLeftVal)
 
     hxRight = HX711(dout_pin=15, pd_sck_pin=13)  # create an object
     hxRightVal = hxRight._read()
-    print(hxRightVal)  # get raw data reading from hx711
+    print("rigt raw", hxRightVal)  # get raw data reading from hx711
     posRightVal = hxRightVal * (-1) / 1 / 2
     print("right", posRightVal)
 
-    print("pos", (0.5 - posLeftVal + posRightVal) * 1000)
-    user.setPosition((0.5 - posLeftVal + posRightVal) * 1000)
+    pos = 
+    print("pos", pos)
+    user.setPosition(pos)
     # GPIO.cleanup()
 
     if startGame:
