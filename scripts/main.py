@@ -411,7 +411,6 @@ layout = [
 strip.loopSegments(segments)
 user.bindControls(pressRight, pressLeft)
 buzz.write(False)
-GPIO.setmode(GPIO.BOARD)
 
 # Loop
 while runLoop:
@@ -433,6 +432,7 @@ while runLoop:
     #     window.Element("outCol").Update(visible=True)
     #     window.Element("inCol").Update(visible=False)
 
+    GPIO.setmode(GPIO.BOARD)
     hx = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
     hxVal = hx._read()
     print(hxVal)  # get raw data reading from hx711
