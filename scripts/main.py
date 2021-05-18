@@ -352,7 +352,7 @@ btn = BinIn(31)
 pressRight = BinIn(35)
 pressLeft = BinIn(33)
 database = Database("/home/pi/Desktop/LightRun/assets/database.db")
-strip = Strip(Vector2(5, 60), 12, 50, 10, 5, True)
+strip = Strip(Vector2(5, 60), 18, 50, 10, 5, True)
 user = User("Player", strip)
 segments = [
     Segment([
@@ -436,13 +436,13 @@ while runLoop:
     #     window.Element("outCol").Update(visible=True)
     #     window.Element("inCol").Update(visible=False)
 
-    hx = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
-    hxVal = hx._read()
-    print(hxVal)  # get raw data reading from hx711
-    posVal = hxVal * (-1) / 875000
-    print(posVal)
-    # user.setPosition()
-    GPIO.cleanup()
+    # hx = HX711(dout_pin=16, pd_sck_pin=18)  # create an object
+    # hxVal = hx._read()
+    # print(hxVal)  # get raw data reading from hx711
+    # posVal = hxVal * (-1) / 875000
+    # print(posVal)
+    # # user.setPosition()
+    # GPIO.cleanup()
 
     if startGame:
         strip.update()
